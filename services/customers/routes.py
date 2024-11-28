@@ -1,29 +1,39 @@
 from flask import Blueprint, request, jsonify
-from .models import Customer
+from .models import User
 from database.db_config import db
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
 import bcrypt
 
-customers_bp = Blueprint('customers', __name__)
+user_bp = Blueprint('user', __name__)
 
-@customers_bp.route('/register', methods=['POST'])
+
+# Helper function to check the role
+def check_role(expected_role):
+    current_user = get_jwt_identity()
+    user = User.query.filter_by(username=current_user).first()
+    if not user or user.role != expected_role:
+        return jsonify({"error": "Access forbidden"}), 403
+    return None
+
+@user_bp.route('/register', methods=['POST'])
 def register_customer():
     try:
         data = request.json
         # Check if username exists
-        if Customer.query.filter_by(username=data['username']).first():
+        if User.query.filter_by(username=data['username']).first():
             return jsonify({"error": "Username already exists"}), 400
 
         hashed_password = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt())
-        new_customer = Customer(
+        new_customer = User(
             full_name=data['full_name'],
             username=data['username'],
             password=hashed_password.decode('utf-8'),
             age=data['age'],
             address=data['address'],
             gender=data['gender'],
-            marital_status=data['marital_status']
+            marital_status=data['marital_status'],
+            role=data.get('role', 'customer')  # Defaults to 'customer'
         )
 
         db.session.add(new_customer)
@@ -31,13 +41,13 @@ def register_customer():
         
         access_token = create_access_token(identity=data['username'], expires_delta=timedelta(hours=24))
 
-        return jsonify({"message": "Customer registered successfully","token": access_token}), 201
+        return jsonify({"message": "User registered successfully","token": access_token}), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
 
-@customers_bp.route('/login', methods=['POST'])
+@user_bp.route('/login', methods=['POST'])
 def login_customer():
     try:
         data = request.json
@@ -45,7 +55,7 @@ def login_customer():
         password = data.get('password')
 
         # Find the user by username
-        customer = Customer.query.filter_by(username=username).first()
+        customer = User.query.filter_by(username=username).first()
         if not customer:
             return jsonify({"error": "Invalid username or password"}), 401
 
@@ -61,15 +71,18 @@ def login_customer():
         return jsonify({"error": str(e)}), 500
 
 
-@customers_bp.route('/delete', methods=['DELETE'])
+@user_bp.route('/delete', methods=['DELETE'])
 @jwt_required()
 def delete_customer():
+    auth_error = check_role('customer')  # Only customers can delete themselves
+    if auth_error:
+        return auth_error
     try:
         # Get the currently logged-in user's identity
         current_user = get_jwt_identity()
 
         # Query the customer by username
-        customer = Customer.query.filter_by(username=current_user).first()
+        customer = User.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
@@ -84,15 +97,19 @@ def delete_customer():
         return jsonify({"error": str(e)}), 500
 
 
-@customers_bp.route('/update', methods=['PATCH'])
+@user_bp.route('/update', methods=['PATCH'])
 @jwt_required()
 def update_customer():
+    auth_error = check_role('customer')  
+    if auth_error:
+        return auth_error
+    
     try:
         # Get the currently logged-in user's identity
         current_user = get_jwt_identity()
 
         # Query the customer by username
-        customer = Customer.query.filter_by(username=current_user).first()
+        customer = User.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
@@ -121,65 +138,68 @@ def update_customer():
         return jsonify({"error": str(e)}), 500
 
 
-@customers_bp.route('/', methods=['GET'])
+@user_bp.route('/', methods=['GET'])
 def get_all_customers():
     try:
-        # Query all customers
-        customers = Customer.query.all()
+        # Query all users
+        users = User.query.all()
 
         # Serialize the result
         result = [
             {
-                "id": customer.id,
-                "full_name": customer.full_name,
-                "username": customer.username,
-                "age": customer.age,
-                "address": customer.address,
-                "gender": customer.gender,
-                "marital_status": customer.marital_status,
-                "wallet_balance": float(customer.wallet_balance),
+                "id": user.id,
+                "full_name": user.full_name,
+                "username": user.username,
+                "age": user.age,
+                "address": user.address,
+                "gender": user.gender,
+                "marital_status": user.marital_status,
+                "wallet_balance": float(user.wallet_balance),
             }
-            for customer in customers
+            for user in users
         ]
 
         return jsonify(result), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@customers_bp.route('/<int:customer_id>', methods=['GET'])
+@user_bp.route('/<int:customer_id>', methods=['GET'])
 def get_customer_by_id(customer_id):
     try:
         # Query the customer by ID
-        customer = Customer.query.get(customer_id)
+        user = User.query.get(customer_id)
 
-        if not customer:
+        if not user:
             return jsonify({"error": "Customer not found"}), 404
 
         # Serialize the result
         result = {
-            "id": customer.id,
-            "full_name": customer.full_name,
-            "username": customer.username,
-            "age": customer.age,
-            "address": customer.address,
-            "gender": customer.gender,
-            "marital_status": customer.marital_status,
-            "wallet_balance": float(customer.wallet_balance),
+            "id": user.id,
+            "full_name": user.full_name,
+            "username": user.username,
+            "age": user.age,
+            "address": user.address,
+            "gender": user.gender,
+            "marital_status": user.marital_status,
+            "wallet_balance": float(user.wallet_balance),
         }
 
         return jsonify(result), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@customers_bp.route('/wallet/charge', methods=['POST'])
+@user_bp.route('/wallet/charge', methods=['POST'])
 @jwt_required()
 def charge_wallet():
+    auth_error = check_role('customer')  
+    if auth_error:
+        return auth_error
     try:
         # Get the currently logged-in user's identity
         current_user = get_jwt_identity()
 
         # Query the customer by username
-        customer = Customer.query.filter_by(username=current_user).first()
+        customer = User.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
@@ -202,15 +222,18 @@ def charge_wallet():
         return jsonify({"error": str(e)}), 500
 
 
-@customers_bp.route('/wallet/deduct', methods=['POST'])
+@user_bp.route('/wallet/deduct', methods=['POST'])
 @jwt_required()
 def deduct_wallet():
+    auth_error = check_role('customer')  
+    if auth_error:
+        return auth_error
     try:
         # Get the currently logged-in user's identity
         current_user = get_jwt_identity()
 
         # Query the customer by username
-        customer = Customer.query.filter_by(username=current_user).first()
+        customer = User.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
