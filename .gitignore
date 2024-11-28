@@ -1,0 +1,58 @@
+# Byte-compiled files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# Environment Variables
+.env
+*.env
+
+# Migrations
+migrations/
+
+# SQLite Database (if used temporarily)
+*.sqlite3
+
+# Logs
+*.log
+logs/
+debug.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE Directories
+.idea/
+.vscode/
+*.code-workspace
+
+# Python Packages
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Coverage Reports
+htmlcov/
+.coverage
+*.cover
+
+# Pytest Cache
+.pytest_cache/
+
+# Docker
+*.pid
+*.tar
+docker-compose.override.yml
+
+# GitHub-related
+*.orig
+
+# Security and Config
+config.json
