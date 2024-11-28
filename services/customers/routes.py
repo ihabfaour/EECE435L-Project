@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
 from .models import Customer
 from database.db_config import db
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from datetime import timedelta
 import bcrypt
 
 customers_bp = Blueprint('customers', __name__)
@@ -26,36 +28,71 @@ def register_customer():
 
         db.session.add(new_customer)
         db.session.commit()
+        
+        access_token = create_access_token(identity=data['username'], expires_delta=timedelta(hours=24))
 
-        return jsonify({"message": "Customer registered successfully"}), 201
+        return jsonify({"message": "Customer registered successfully","token": access_token}), 201
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-@customers_bp.route('/<int:customer_id>', methods=['DELETE'])
-def delete_customer(customer_id):
-    try:
-        # Query the customer by ID
-        customer = Customer.query.get(customer_id)
 
-        # If the customer doesn't exist, return an error
+@customers_bp.route('/login', methods=['POST'])
+def login_customer():
+    try:
+        data = request.json
+        username = data.get('username')
+        password = data.get('password')
+
+        # Find the user by username
+        customer = Customer.query.filter_by(username=username).first()
+        if not customer:
+            return jsonify({"error": "Invalid username or password"}), 401
+
+        # Check password
+        if not bcrypt.checkpw(password.encode('utf-8'), customer.password.encode('utf-8')):
+            return jsonify({"error": "Invalid username or password"}), 401
+
+        # Generate JWT Token
+        access_token = create_access_token(identity=username, expires_delta=timedelta(hours=24))
+
+        return jsonify({"message": "Login successful", "token": access_token}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@customers_bp.route('/delete', methods=['DELETE'])
+@jwt_required()
+def delete_customer():
+    try:
+        # Get the currently logged-in user's identity
+        current_user = get_jwt_identity()
+
+        # Query the customer by username
+        customer = Customer.query.filter_by(username=current_user).first()
+
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
 
-        # Delete the customer from the database
+        # Delete the customer
         db.session.delete(customer)
         db.session.commit()
 
-        return jsonify({"message": f"Customer with ID {customer_id} deleted successfully"}), 200
+        return jsonify({"message": f"Customer {current_user} deleted successfully"}), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-@customers_bp.route('/<int:customer_id>', methods=['PATCH'])
-def update_customer(customer_id):
+
+@customers_bp.route('/update', methods=['PATCH'])
+@jwt_required()
+def update_customer():
     try:
-        # Get the customer by ID
-        customer = Customer.query.get(customer_id)
+        # Get the currently logged-in user's identity
+        current_user = get_jwt_identity()
+
+        # Query the customer by username
+        customer = Customer.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
@@ -64,8 +101,6 @@ def update_customer(customer_id):
         data = request.json
         if "full_name" in data:
             customer.full_name = data["full_name"]
-        if "username" in data:
-            customer.username = data["username"]
         if "password" in data:
             hashed_password = bcrypt.hashpw(data["password"].encode('utf-8'), bcrypt.gensalt())
             customer.password = hashed_password.decode('utf-8')
@@ -77,8 +112,6 @@ def update_customer(customer_id):
             customer.gender = data["gender"]
         if "marital_status" in data:
             customer.marital_status = data["marital_status"]
-        if "wallet_balance" in data:
-            customer.wallet_balance = data["wallet_balance"]
 
         # Save changes
         db.session.commit()
@@ -86,6 +119,7 @@ def update_customer(customer_id):
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
+
 
 @customers_bp.route('/', methods=['GET'])
 def get_all_customers():
@@ -137,11 +171,15 @@ def get_customer_by_id(customer_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@customers_bp.route('/<int:customer_id>/charge', methods=['POST'])
-def charge_wallet(customer_id):
+@customers_bp.route('/wallet/charge', methods=['POST'])
+@jwt_required()
+def charge_wallet():
     try:
-        # Get the customer by ID
-        customer = Customer.query.get(customer_id)
+        # Get the currently logged-in user's identity
+        current_user = get_jwt_identity()
+
+        # Query the customer by username
+        customer = Customer.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
@@ -163,11 +201,16 @@ def charge_wallet(customer_id):
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-@customers_bp.route('/<int:customer_id>/deduct', methods=['POST'])
-def deduct_wallet(customer_id):
+
+@customers_bp.route('/wallet/deduct', methods=['POST'])
+@jwt_required()
+def deduct_wallet():
     try:
-        # Get the customer by ID
-        customer = Customer.query.get(customer_id)
+        # Get the currently logged-in user's identity
+        current_user = get_jwt_identity()
+
+        # Query the customer by username
+        customer = Customer.query.filter_by(username=current_user).first()
 
         if not customer:
             return jsonify({"error": "Customer not found"}), 404
@@ -191,3 +234,4 @@ def deduct_wallet(customer_id):
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
+
