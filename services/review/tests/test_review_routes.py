@@ -2,7 +2,7 @@
 # from flask import json
 # from services.app import create_app
 # from database.db_config import db
-
+#there's something that needs to be fixed here
 # @pytest.fixture(scope="module")
 # def test_client():
 #     app = create_app("testing")
