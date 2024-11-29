@@ -6,6 +6,7 @@ click==8.1.7
 colorama==0.4.6
 cryptography==44.0.0
 Flask==3.1.0
+Flask-Cors==3.0.10
 Flask-JWT-Extended==4.7.1
 Flask-Migrate==4.0.7
 Flask-SQLAlchemy==3.1.1
@@ -17,7 +18,10 @@ MarkupSafe==3.0.2
 pycparser==2.22
 PyJWT==2.10.1
 PyMySQL==1.1.1
+pytest==7.4.2
+pytest-flask==1.2.0
 python-dotenv==1.0.1
+simplejson==3.19.1
 SQLAlchemy==2.0.36
 typing_extensions==4.12.2
 Werkzeug==3.1.3
