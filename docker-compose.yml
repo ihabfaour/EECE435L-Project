@@ -21,10 +21,27 @@ services:
     restart: always
     ports:
       - "5000:5000"
+    environment:
+      FLASK_ENV: development
+      PYTHONPATH: /app
     volumes:
       - .:/app
     depends_on:
       - mysql
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-container
+    depends_on:
+      - mysql
+    environment:
+      FLASK_ENV: testing
+      PYTHONPATH: /app
+    volumes:
+      - .:/app
+    entrypoint: ["pytest", "-v", "--maxfail=1", "--disable-warnings"]
 
 volumes:
   mysql_data:
