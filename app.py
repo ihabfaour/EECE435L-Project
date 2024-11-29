@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 from services.wishlist.routes import wishlist_bp
 from services.customers.models import User
+from services.review.models import Review
 from services.inventory.models import Inventory
 from services.wishlist.models import Wishlist
 
