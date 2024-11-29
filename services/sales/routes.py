@@ -9,6 +9,12 @@ sales_bp = Blueprint('sales', __name__)
 
 @sales_bp.route('/display', methods=['GET'])
 def display_goods():
+    """
+    Display a list of all available goods.
+
+    :return: JSON response containing a list of goods with their names and prices,
+             or an error message in case of failure.
+    """
     try:
         items = Inventory.query.all()
         result = [{"name": item.name, "price": item.price_per_item} for item in items]
@@ -18,6 +24,12 @@ def display_goods():
 
 @sales_bp.route('/details/<int:item_id>', methods=['GET'])
 def get_good_details(item_id):
+    """
+    Get details of a specific good.
+
+    :param item_id: ID of the good to retrieve details for.
+    :return: JSON response containing the item's details, or an error message.
+    """
     try:
         item = Inventory.query.get(item_id)
         if not item:
@@ -29,6 +41,15 @@ def get_good_details(item_id):
 @sales_bp.route('/sale', methods=['POST'])
 @jwt_required()
 def make_sale():
+    """
+    Make a sale for a specified product and quantity.
+
+    :request json: {
+        "product_id": int,  # ID of the product to purchase
+        "quantity": int     # Quantity to purchase
+    }
+    :return: JSON response with the sale details or an error message.
+    """
     try:
         current_user = get_jwt_identity()
         user = User.query.filter_by(username=current_user).first()
@@ -78,6 +99,11 @@ def make_sale():
 @sales_bp.route('/history', methods=['GET'])
 @jwt_required()
 def get_purchase_history():
+    """
+    Retrieve the purchase history for the logged-in customer.
+
+    :return: JSON response containing a list of past purchases or an error message.
+    """
     try:
         current_user = get_jwt_identity()
         sales = Sale.query.filter_by(customer_username=current_user).all()

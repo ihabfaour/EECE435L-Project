@@ -9,6 +9,11 @@ wishlist_bp = Blueprint('wishlist', __name__)
 
 # Helper function to check customer role
 def authorize_customer():
+    """
+    Helper function to check if the currently logged-in user has customer privileges.
+
+    :return: A JSON response with an error message if access is forbidden, otherwise None.
+    """
     current_user = get_jwt_identity()
     user = User.query.filter_by(username=current_user).first()
     if not user or user.role != 'customer':
@@ -18,6 +23,14 @@ def authorize_customer():
 @wishlist_bp.route('/add', methods=['POST'])
 @jwt_required()
 def add_to_wishlist():
+    """
+    Add an item to the user's wishlist (customer only).
+
+    :request json: {
+        "item_id": "ID of the inventory item to add"
+    }
+    :return: A JSON response with a success message, or an error message if the item is already in the wishlist or not found.
+    """
     auth_error = authorize_customer()
     if auth_error:
         return auth_error
@@ -49,6 +62,11 @@ def add_to_wishlist():
 @wishlist_bp.route('/', methods=['GET'])
 @jwt_required()
 def view_wishlist():
+    """
+    View the items in the user's wishlist (customer only).
+
+    :return: A JSON response with a list of wishlist items, or an error message if access is forbidden.
+    """
     auth_error = authorize_customer()
     if auth_error:
         return auth_error
@@ -65,6 +83,12 @@ def view_wishlist():
 @wishlist_bp.route('/<int:item_id>', methods=['DELETE'])
 @jwt_required()
 def remove_from_wishlist(item_id):
+    """
+    Remove an item from the user's wishlist (customer only).
+
+    :param item_id: ID of the wishlist item to remove.
+    :return: A JSON response with a success message, or an error message if the item is not in the wishlist.
+    """
     auth_error = authorize_customer()
     if auth_error:
         return auth_error

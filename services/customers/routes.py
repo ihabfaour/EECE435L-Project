@@ -10,6 +10,12 @@ user_bp = Blueprint('user', __name__)
 
 # Helper function to check the role
 def check_role(expected_role):
+    """
+    Helper function to check if the currently logged-in user has the expected role.
+
+    :param expected_role: The role required for the operation (e.g., 'customer' or 'admin').
+    :return: A JSON response with an error message if access is forbidden, otherwise None.
+    """
     current_user = get_jwt_identity()
     user = User.query.filter_by(username=current_user).first()
     if not user or user.role != expected_role:
@@ -18,6 +24,21 @@ def check_role(expected_role):
 
 @user_bp.route('/register', methods=['POST'])
 def register_customer():
+    """
+    Register a new user.
+
+    :request json: {
+        "full_name": "Full name of the user",
+        "username": "Unique username",
+        "password": "Password",
+        "age": "Age of the user",
+        "address": "Address of the user",
+        "gender": "Gender of the user",
+        "marital_status": "Marital status of the user",
+        "role": "Role of the user (optional, defaults to 'customer')"
+    }
+    :return: A JSON response with a success message and access token, or an error message.
+    """
     try:
         data = request.json
         # Check if username exists
@@ -49,6 +70,15 @@ def register_customer():
 
 @user_bp.route('/login', methods=['POST'])
 def login_customer():
+    """
+    Log in an existing user.
+
+    :request json: {
+        "username": "Username of the user",
+        "password": "Password of the user"
+    }
+    :return: A JSON response with a success message and access token, or an error message.
+    """
     try:
         data = request.json
         username = data.get('username')
@@ -74,6 +104,11 @@ def login_customer():
 @user_bp.route('/delete', methods=['DELETE'])
 @jwt_required()
 def delete_customer():
+    """
+    Delete the currently logged-in user.
+
+    :return: A JSON response with a success message or an error message.
+    """
     auth_error = check_role('customer')  # Only customers can delete themselves
     if auth_error:
         return auth_error
@@ -100,6 +135,19 @@ def delete_customer():
 @user_bp.route('/update', methods=['PATCH'])
 @jwt_required()
 def update_customer():
+    """
+    Update details of the currently logged-in user.
+
+    :request json: {
+        "full_name": "New full name (optional)",
+        "password": "New password (optional)",
+        "age": "New age (optional)",
+        "address": "New address (optional)",
+        "gender": "New gender (optional)",
+        "marital_status": "New marital status (optional)"
+    }
+    :return: A JSON response with a success message or an error message.
+    """
     auth_error = check_role('customer')  
     if auth_error:
         return auth_error
@@ -140,6 +188,11 @@ def update_customer():
 
 @user_bp.route('/', methods=['GET'])
 def get_all_customers():
+    """
+    Retrieve a list of all customers.
+
+    :return: A JSON response with a list of customer details or an error message.
+    """
     try:
         # Query all users
         users = User.query.all()
@@ -165,6 +218,12 @@ def get_all_customers():
 
 @user_bp.route('/<int:customer_id>', methods=['GET'])
 def get_customer_by_id(customer_id):
+    """
+    Retrieve details of a specific customer by ID.
+
+    :param customer_id: ID of the customer to fetch.
+    :return: A JSON response with the customer details or an error message.
+    """
     try:
         # Query the customer by ID
         user = User.query.get(customer_id)
@@ -191,6 +250,12 @@ def get_customer_by_id(customer_id):
 @user_bp.route('/wallet/charge', methods=['POST'])
 @jwt_required()
 def charge_wallet():
+    """
+    Add funds to the wallet of the logged-in user.
+
+    :request json: {"amount": "Amount to add"}
+    :return: A JSON response with the updated wallet balance or an error message.
+    """
     auth_error = check_role('customer')  
     if auth_error:
         return auth_error
@@ -225,6 +290,12 @@ def charge_wallet():
 @user_bp.route('/wallet/deduct', methods=['POST'])
 @jwt_required()
 def deduct_wallet():
+    """
+    Deduct funds from the wallet of the logged-in user.
+
+    :request json: {"amount": "Amount to deduct"}
+    :return: A JSON response with the updated wallet balance or an error message.
+    """
     auth_error = check_role('customer')  
     if auth_error:
         return auth_error
