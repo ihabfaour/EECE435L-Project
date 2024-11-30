@@ -3,6 +3,7 @@ from .models import User
 from database.db_config import db
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
+from utils import profile_route , line_profile
 import bcrypt
 
 user_bp = Blueprint('user', __name__)
@@ -23,6 +24,7 @@ def check_role(expected_role):
     return None
 
 @user_bp.route('/register', methods=['POST'])
+@profile_route
 def register_customer():
     """
     Register a new user.
@@ -69,6 +71,7 @@ def register_customer():
 
 
 @user_bp.route('/login', methods=['POST'])
+@profile_route
 def login_customer():
     """
     Log in an existing user.
@@ -103,6 +106,7 @@ def login_customer():
 
 @user_bp.route('/delete', methods=['DELETE'])
 @jwt_required()
+@profile_route
 def delete_customer():
     """
     Delete the currently logged-in user.
@@ -134,6 +138,7 @@ def delete_customer():
 
 @user_bp.route('/update', methods=['PATCH'])
 @jwt_required()
+@profile_route
 def update_customer():
     """
     Update details of the currently logged-in user.
@@ -187,6 +192,7 @@ def update_customer():
 
 
 @user_bp.route('/', methods=['GET'])
+@line_profile
 def get_all_customers():
     """
     Retrieve a list of all customers.
@@ -217,6 +223,7 @@ def get_all_customers():
         return jsonify({"error": str(e)}), 500
 
 @user_bp.route('/<int:customer_id>', methods=['GET'])
+@line_profile
 def get_customer_by_id(customer_id):
     """
     Retrieve details of a specific customer by ID.
@@ -249,6 +256,7 @@ def get_customer_by_id(customer_id):
 
 @user_bp.route('/wallet/charge', methods=['POST'])
 @jwt_required()
+@line_profile
 def charge_wallet():
     """
     Add funds to the wallet of the logged-in user.

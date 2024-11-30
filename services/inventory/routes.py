@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from database.db_config import db
 from .models import Inventory
+from utils import line_profile, profile_route
 from services.customers.models import User
 
 inventory_bp = Blueprint('inventory', __name__)
@@ -22,6 +23,7 @@ def authorize_admin():
 
 @inventory_bp.route('/add', methods=['POST'])
 @jwt_required()
+@profile_route
 def add_inventory_item():
     """
     Add a new item to the inventory (admin only).
@@ -58,6 +60,7 @@ def add_inventory_item():
 
 @inventory_bp.route('/<int:item_id>/deduct', methods=['POST'])
 @jwt_required()
+@line_profile
 def deduct_stock(item_id):
     """
     Deduct a specific quantity of stock from an inventory item (admin only).
@@ -101,6 +104,7 @@ def deduct_stock(item_id):
     
 @inventory_bp.route('/<int:item_id>/update', methods=['PATCH'])
 @jwt_required()
+@line_profile
 def update_item(item_id):
     """
     Update details of an existing inventory item (admin only).
@@ -147,6 +151,7 @@ def update_item(item_id):
 
 @inventory_bp.route('/', methods=['GET'])
 @jwt_required()
+@profile_route
 def get_all_items():
     """
     Retrieve all inventory items.

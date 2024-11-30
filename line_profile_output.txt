@@ -1,0 +1,978 @@
+
+Profiling results for function: get_all_customers
+Timer unit: 1e-07 s
+
+Total time: 0.0478766 s
+File: C:\Users\Ihab\435L\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: get_all_customers at line 194
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   194                                           @user_bp.route('/', methods=['GET'])
+   195                                           @line_profile
+   196                                           def get_all_customers():
+   197                                               """
+   198                                               Retrieve a list of all customers.
+   199                                           
+   200                                               :return: A JSON response with a list of customer details or an error message.
+   201                                               """
+   202         1          6.0      6.0      0.0      try:
+   203                                                   # Query all users
+   204         1     475168.0 475168.0     99.2          users = User.query.all()
+   205                                           
+   206                                                   # Serialize the result
+   207         2          7.0      3.5      0.0          result = [
+   208         3         31.0     10.3      0.0              {
+   209         3        171.0     57.0      0.0                  "id": user.id,
+   210         3         90.0     30.0      0.0                  "full_name": user.full_name,
+   211         3         85.0     28.3      0.0                  "username": user.username,
+   212         3         73.0     24.3      0.0                  "age": user.age,
+   213         3         68.0     22.7      0.0                  "address": user.address,
+   214         3         70.0     23.3      0.0                  "gender": user.gender,
+   215         3         80.0     26.7      0.0                  "marital_status": user.marital_status,
+   216         3         89.0     29.7      0.0                  "wallet_balance": float(user.wallet_balance),
+   217                                                       }
+   218         5         27.0      5.4      0.0              for user in users
+   219                                                   ]
+   220                                           
+   221         1       2801.0   2801.0      0.6          return jsonify(result), 200
+   222                                               except Exception as e:
+   223                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_all_customers
+Timer unit: 1e-07 s
+
+Total time: 0.0054232 s
+File: C:\Users\Ihab\435L\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: get_all_customers at line 195
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   195                                           @user_bp.route('/', methods=['GET'])
+   196                                           @line_profile
+   197                                           def get_all_customers():
+   198                                               """
+   199                                               Retrieve a list of all customers.
+   200                                           
+   201                                               :return: A JSON response with a list of customer details or an error message.
+   202                                               """
+   203         1          5.0      5.0      0.0      try:
+   204                                                   # Query all users
+   205         1      52021.0  52021.0     95.9          users = User.query.all()
+   206                                           
+   207                                                   # Serialize the result
+   208         2          5.0      2.5      0.0          result = [
+   209         3         26.0      8.7      0.0              {
+   210         3        108.0     36.0      0.2                  "id": user.id,
+   211         3         66.0     22.0      0.1                  "full_name": user.full_name,
+   212         3         64.0     21.3      0.1                  "username": user.username,
+   213         3         61.0     20.3      0.1                  "age": user.age,
+   214         3         62.0     20.7      0.1                  "address": user.address,
+   215         3         89.0     29.7      0.2                  "gender": user.gender,
+   216         3         62.0     20.7      0.1                  "marital_status": user.marital_status,
+   217         3         69.0     23.0      0.1                  "wallet_balance": float(user.wallet_balance),
+   218                                                       }
+   219         5         21.0      4.2      0.0              for user in users
+   220                                                   ]
+   221                                           
+   222         1       1573.0   1573.0      2.9          return jsonify(result), 200
+   223                                               except Exception as e:
+   224                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-07 s
+
+Total time: 0.0064647 s
+File: C:\Users\Ihab\435L\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: get_customer_by_id at line 226
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   226                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   227                                           @line_profile
+   228                                           def get_customer_by_id(customer_id):
+   229                                               """
+   230                                               Retrieve details of a specific customer by ID.
+   231                                           
+   232                                               :param customer_id: ID of the customer to fetch.
+   233                                               :return: A JSON response with the customer details or an error message.
+   234                                               """
+   235         1          8.0      8.0      0.0      try:
+   236                                                   # Query the customer by ID
+   237         1      62626.0  62626.0     96.9          user = User.query.get(customer_id)
+   238                                           
+   239         1          7.0      7.0      0.0          if not user:
+   240                                                       return jsonify({"error": "Customer not found"}), 404
+   241                                           
+   242                                                   # Serialize the result
+   243         1         10.0     10.0      0.0          result = {
+   244         1         77.0     77.0      0.1              "id": user.id,
+   245         1         25.0     25.0      0.0              "full_name": user.full_name,
+   246         1         24.0     24.0      0.0              "username": user.username,
+   247         1         22.0     22.0      0.0              "age": user.age,
+   248         1         23.0     23.0      0.0              "address": user.address,
+   249         1         21.0     21.0      0.0              "gender": user.gender,
+   250         1         20.0     20.0      0.0              "marital_status": user.marital_status,
+   251         1         36.0     36.0      0.1              "wallet_balance": float(user.wallet_balance),
+   252                                                   }
+   253                                           
+   254         1       1748.0   1748.0      2.7          return jsonify(result), 200
+   255                                               except Exception as e:
+   256                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-07 s
+
+Total time: 0.0037509 s
+File: C:\Users\Ihab\435L\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: get_customer_by_id at line 226
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   226                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   227                                           @line_profile
+   228                                           def get_customer_by_id(customer_id):
+   229                                               """
+   230                                               Retrieve details of a specific customer by ID.
+   231                                           
+   232                                               :param customer_id: ID of the customer to fetch.
+   233                                               :return: A JSON response with the customer details or an error message.
+   234                                               """
+   235         1         11.0     11.0      0.0      try:
+   236                                                   # Query the customer by ID
+   237         1      35997.0  35997.0     96.0          user = User.query.get(customer_id)
+   238                                           
+   239         1          5.0      5.0      0.0          if not user:
+   240         1       1496.0   1496.0      4.0              return jsonify({"error": "Customer not found"}), 404
+   241                                           
+   242                                                   # Serialize the result
+   243                                                   result = {
+   244                                                       "id": user.id,
+   245                                                       "full_name": user.full_name,
+   246                                                       "username": user.username,
+   247                                                       "age": user.age,
+   248                                                       "address": user.address,
+   249                                                       "gender": user.gender,
+   250                                                       "marital_status": user.marital_status,
+   251                                                       "wallet_balance": float(user.wallet_balance),
+   252                                                   }
+   253                                           
+   254                                                   return jsonify(result), 200
+   255                                               except Exception as e:
+   256                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-07 s
+
+Total time: 0.0041594 s
+File: C:\Users\Ihab\435L\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: get_customer_by_id at line 226
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   226                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   227                                           @line_profile
+   228                                           def get_customer_by_id(customer_id):
+   229                                               """
+   230                                               Retrieve details of a specific customer by ID.
+   231                                           
+   232                                               :param customer_id: ID of the customer to fetch.
+   233                                               :return: A JSON response with the customer details or an error message.
+   234                                               """
+   235         1         16.0     16.0      0.0      try:
+   236                                                   # Query the customer by ID
+   237         1      39836.0  39836.0     95.8          user = User.query.get(customer_id)
+   238                                           
+   239         1          6.0      6.0      0.0          if not user:
+   240                                                       return jsonify({"error": "Customer not found"}), 404
+   241                                           
+   242                                                   # Serialize the result
+   243         1         12.0     12.0      0.0          result = {
+   244         1         67.0     67.0      0.2              "id": user.id,
+   245         1         28.0     28.0      0.1              "full_name": user.full_name,
+   246         1         23.0     23.0      0.1              "username": user.username,
+   247         1         22.0     22.0      0.1              "age": user.age,
+   248         1         22.0     22.0      0.1              "address": user.address,
+   249         1         23.0     23.0      0.1              "gender": user.gender,
+   250         1         21.0     21.0      0.1              "marital_status": user.marital_status,
+   251         1         26.0     26.0      0.1              "wallet_balance": float(user.wallet_balance),
+   252                                                   }
+   253                                           
+   254         1       1492.0   1492.0      3.6          return jsonify(result), 200
+   255                                               except Exception as e:
+   256                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: charge_wallet
+Timer unit: 1e-07 s
+
+Total time: 0.0183243 s
+File: C:\Users\Ihab\435L\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: charge_wallet at line 258
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   258                                           @user_bp.route('/wallet/charge', methods=['POST'])
+   259                                           @jwt_required()
+   260                                           @line_profile
+   261                                           def charge_wallet():
+   262                                               """
+   263                                               Add funds to the wallet of the logged-in user.
+   264                                           
+   265                                               :request json: {"amount": "Amount to add"}
+   266                                               :return: A JSON response with the updated wallet balance or an error message.
+   267                                               """
+   268         1      45314.0  45314.0     24.7      auth_error = check_role('customer')  
+   269         1          6.0      6.0      0.0      if auth_error:
+   270                                                   return auth_error
+   271         1          3.0      3.0      0.0      try:
+   272                                                   # Get the currently logged-in user's identity
+   273         1        337.0    337.0      0.2          current_user = get_jwt_identity()
+   274                                           
+   275                                                   # Query the customer by username
+   276         1      30402.0  30402.0     16.6          customer = User.query.filter_by(username=current_user).first()
+   277                                           
+   278         1          6.0      6.0      0.0          if not customer:
+   279                                                       return jsonify({"error": "Customer not found"}), 404
+   280                                           
+   281                                                   # Get the amount to charge from the request
+   282         1       2138.0   2138.0      1.2          data = request.json
+   283         1         11.0     11.0      0.0          amount = data.get("amount")
+   284                                           
+   285         1          8.0      8.0      0.0          if not amount or amount <= 0:
+   286                                                       return jsonify({"error": "Invalid amount"}), 400
+   287                                           
+   288                                                   # Update wallet balance
+   289         1        432.0    432.0      0.2          customer.wallet_balance += amount
+   290         1      46551.0  46551.0     25.4          db.session.commit()
+   291                                           
+   292         3       1565.0    521.7      0.9          return jsonify({"message": f"${amount} successfully added to wallet", 
+   293         2      56470.0  28235.0     30.8                          "wallet_balance": float(customer.wallet_balance)}), 200
+   294                                               except Exception as e:
+   295                                                   db.session.rollback()
+   296                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: deduct_stock
+Timer unit: 1e-09 s
+
+Total time: 0.0428862 s
+File: /app/services/inventory/routes.py
+Function: deduct_stock at line 61
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    61                                           @inventory_bp.route('/<int:item_id>/deduct', methods=['POST'])
+    62                                           @jwt_required()
+    63                                           @line_profile
+    64                                           def deduct_stock(item_id):
+    65                                               """
+    66                                               Deduct a specific quantity of stock from an inventory item (admin only).
+    67                                           
+    68                                               :param item_id: ID of the inventory item to deduct stock from.
+    69                                               :request json: {
+    70                                                   "quantity": "Quantity to deduct"
+    71                                               }
+    72                                               :return: A JSON response with a success message and remaining stock, or an error message.
+    73                                               """
+    74         1    2828845.0    3e+06      6.6      auth_error = authorize_admin()
+    75         1        300.0    300.0      0.0      if auth_error:
+    76                                                   return auth_error
+    77                                           
+    78         1        200.0    200.0      0.0      try:
+    79                                                   # Get the item by ID
+    80         1    7170612.0    7e+06     16.7          item = Inventory.query.get(item_id)
+    81         1        300.0    300.0      0.0          if not item:
+    82                                                       return jsonify({"error": "Item not found"}), 404
+    83                                           
+    84         1     220304.0 220304.0      0.5          data = request.json
+    85         1        900.0    900.0      0.0          quantity = data.get('quantity', 0)
+    86                                           
+    87         1        300.0    300.0      0.0          if quantity <= 0:
+    88                                                       return jsonify({"error": "Invalid quantity"}), 400
+    89                                           
+    90         1      27600.0  27600.0      0.1          if item.stock_count < quantity:
+    91                                                       return jsonify({"error": "Insufficient stock"}), 400
+    92                                           
+    93                                                   # Deduct the stock
+    94         1      34201.0  34201.0      0.1          item.stock_count -= quantity
+    95         1   24591686.0    2e+07     57.3          db.session.commit()
+    96                                           
+    97         3     223803.0  74601.0      0.5          return jsonify({
+    98         1    7760622.0    8e+06     18.1              "message": f"{quantity} units deducted from {item.name}",
+    99         1      26301.0  26301.0      0.1              "remaining_stock": item.stock_count
+   100         1        200.0    200.0      0.0          }), 200
+   101                                               except Exception as e:
+   102                                                   db.session.rollback()
+   103                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: update_item
+Timer unit: 1e-09 s
+
+Total time: 0.0268692 s
+File: /app/services/inventory/routes.py
+Function: update_item at line 105
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   105                                           @inventory_bp.route('/<int:item_id>/update', methods=['PATCH'])
+   106                                           @jwt_required()
+   107                                           @line_profile
+   108                                           def update_item(item_id):
+   109                                               """
+   110                                               Update details of an existing inventory item (admin only).
+   111                                           
+   112                                               :param item_id: ID of the inventory item to update.
+   113                                               :request json: {
+   114                                                   "name": "New name (optional)",
+   115                                                   "category": "New category (optional)",
+   116                                                   "price_per_item": "New price per unit (optional)",
+   117                                                   "description": "New description (optional)",
+   118                                                   "stock_count": "New stock count (optional)"
+   119                                               }
+   120                                               :return: A JSON response with a success message and updated item details, or an error message.
+   121                                               """
+   122         1    3059048.0    3e+06     11.4      auth_error = authorize_admin()
+   123         1        400.0    400.0      0.0      if auth_error:
+   124                                                   return auth_error
+   125                                           
+   126         1        100.0    100.0      0.0      try:
+   127                                                   # Get the item by ID
+   128         1    6614704.0    7e+06     24.6          item = Inventory.query.get(item_id)
+   129         1       1500.0   1500.0      0.0          if not item:
+   130                                                       return jsonify({"error": "Item not found"}), 404
+   131                                           
+   132                                                   # Update fields based on the input
+   133         1     440106.0 440106.0      1.6          data = request.json
+   134         1       1700.0   1700.0      0.0          if 'name' in data:
+   135                                                       item.name = data['name']
+   136         1        900.0    900.0      0.0          if 'category' in data:
+   137                                                       item.category = data['category']
+   138         1        900.0    900.0      0.0          if 'price_per_item' in data:
+   139         1      70901.0  70901.0      0.3              item.price_per_item = data['price_per_item']
+   140         1        900.0    900.0      0.0          if 'description' in data:
+   141                                                       item.description = data['description']
+   142         1        400.0    400.0      0.0          if 'stock_count' in data:
+   143                                                       item.stock_count = data['stock_count']
+   144                                           
+   145         1   13885718.0    1e+07     51.7          db.session.commit()
+   146                                           
+   147         1    2791944.0    3e+06     10.4          return jsonify({"message": f"Item {item.name} updated successfully", "item": item.to_dict()}), 200
+   148                                               except Exception as e:
+   149                                                   db.session.rollback()
+   150                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_all_customers
+Timer unit: 1e-09 s
+
+Total time: 0.00582059 s
+File: /app/services/customers/routes.py
+Function: get_all_customers at line 194
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   194                                           @user_bp.route('/', methods=['GET'])
+   195                                           @line_profile
+   196                                           def get_all_customers():
+   197                                               """
+   198                                               Retrieve a list of all customers.
+   199                                           
+   200                                               :return: A JSON response with a list of customer details or an error message.
+   201                                               """
+   202         1        800.0    800.0      0.0      try:
+   203                                                   # Query all users
+   204         1    5578991.0    6e+06     95.8          users = User.query.all()
+   205                                           
+   206                                                   # Serialize the result
+   207         2      51300.0  25650.0      0.9          result = [
+   208                                                       {
+   209                                                           "id": user.id,
+   210                                                           "full_name": user.full_name,
+   211                                                           "username": user.username,
+   212                                                           "age": user.age,
+   213                                                           "address": user.address,
+   214                                                           "gender": user.gender,
+   215                                                           "marital_status": user.marital_status,
+   216                                                           "wallet_balance": float(user.wallet_balance),
+   217                                                       }
+   218         1        200.0    200.0      0.0              for user in users
+   219                                                   ]
+   220                                           
+   221         1     189300.0 189300.0      3.3          return jsonify(result), 200
+   222                                               except Exception as e:
+   223                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 0.00787641 s
+File: /app/services/customers/routes.py
+Function: get_customer_by_id at line 225
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   225                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   226                                           @line_profile
+   227                                           def get_customer_by_id(customer_id):
+   228                                               """
+   229                                               Retrieve details of a specific customer by ID.
+   230                                           
+   231                                               :param customer_id: ID of the customer to fetch.
+   232                                               :return: A JSON response with the customer details or an error message.
+   233                                               """
+   234         1       1000.0   1000.0      0.0      try:
+   235                                                   # Query the customer by ID
+   236         1    7692410.0    8e+06     97.7          user = User.query.get(customer_id)
+   237                                           
+   238         1       2200.0   2200.0      0.0          if not user:
+   239                                                       return jsonify({"error": "Customer not found"}), 404
+   240                                           
+   241                                                   # Serialize the result
+   242         1       1900.0   1900.0      0.0          result = {
+   243         1      13300.0  13300.0      0.2              "id": user.id,
+   244         1       2300.0   2300.0      0.0              "full_name": user.full_name,
+   245         1       2100.0   2100.0      0.0              "username": user.username,
+   246         1       1600.0   1600.0      0.0              "age": user.age,
+   247         1       1800.0   1800.0      0.0              "address": user.address,
+   248         1       1700.0   1700.0      0.0              "gender": user.gender,
+   249         1       1800.0   1800.0      0.0              "marital_status": user.marital_status,
+   250         1       2800.0   2800.0      0.0              "wallet_balance": float(user.wallet_balance),
+   251                                                   }
+   252                                           
+   253         1     151500.0 151500.0      1.9          return jsonify(result), 200
+   254                                               except Exception as e:
+   255                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 0.00307489 s
+File: /app/services/customers/routes.py
+Function: get_customer_by_id at line 225
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   225                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   226                                           @line_profile
+   227                                           def get_customer_by_id(customer_id):
+   228                                               """
+   229                                               Retrieve details of a specific customer by ID.
+   230                                           
+   231                                               :param customer_id: ID of the customer to fetch.
+   232                                               :return: A JSON response with the customer details or an error message.
+   233                                               """
+   234         1        600.0    600.0      0.0      try:
+   235                                                   # Query the customer by ID
+   236         1    2958994.0    3e+06     96.2          user = User.query.get(customer_id)
+   237                                           
+   238         1        300.0    300.0      0.0          if not user:
+   239         1     115000.0 115000.0      3.7              return jsonify({"error": "Customer not found"}), 404
+   240                                           
+   241                                                   # Serialize the result
+   242                                                   result = {
+   243                                                       "id": user.id,
+   244                                                       "full_name": user.full_name,
+   245                                                       "username": user.username,
+   246                                                       "age": user.age,
+   247                                                       "address": user.address,
+   248                                                       "gender": user.gender,
+   249                                                       "marital_status": user.marital_status,
+   250                                                       "wallet_balance": float(user.wallet_balance),
+   251                                                   }
+   252                                           
+   253                                                   return jsonify(result), 200
+   254                                               except Exception as e:
+   255                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 0.0040253 s
+File: /app/services/customers/routes.py
+Function: get_customer_by_id at line 225
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   225                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   226                                           @line_profile
+   227                                           def get_customer_by_id(customer_id):
+   228                                               """
+   229                                               Retrieve details of a specific customer by ID.
+   230                                           
+   231                                               :param customer_id: ID of the customer to fetch.
+   232                                               :return: A JSON response with the customer details or an error message.
+   233                                               """
+   234         1        600.0    600.0      0.0      try:
+   235                                                   # Query the customer by ID
+   236         1    3868398.0    4e+06     96.1          user = User.query.get(customer_id)
+   237                                           
+   238         1        700.0    700.0      0.0          if not user:
+   239                                                       return jsonify({"error": "Customer not found"}), 404
+   240                                           
+   241                                                   # Serialize the result
+   242         1       1500.0   1500.0      0.0          result = {
+   243         1      10000.0  10000.0      0.2              "id": user.id,
+   244         1       2400.0   2400.0      0.1              "full_name": user.full_name,
+   245         1       2300.0   2300.0      0.1              "username": user.username,
+   246         1       1700.0   1700.0      0.0              "age": user.age,
+   247         1       1800.0   1800.0      0.0              "address": user.address,
+   248         1       2100.0   2100.0      0.1              "gender": user.gender,
+   249         1       1900.0   1900.0      0.0              "marital_status": user.marital_status,
+   250         1      20000.0  20000.0      0.5              "wallet_balance": float(user.wallet_balance),
+   251                                                   }
+   252                                           
+   253         1     111900.0 111900.0      2.8          return jsonify(result), 200
+   254                                               except Exception as e:
+   255                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: charge_wallet
+Timer unit: 1e-09 s
+
+Total time: 0.0163426 s
+File: /app/services/customers/routes.py
+Function: charge_wallet at line 257
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   257                                           @user_bp.route('/wallet/charge', methods=['POST'])
+   258                                           @jwt_required()
+   259                                           @line_profile
+   260                                           def charge_wallet():
+   261                                               """
+   262                                               Add funds to the wallet of the logged-in user.
+   263                                           
+   264                                               :request json: {"amount": "Amount to add"}
+   265                                               :return: A JSON response with the updated wallet balance or an error message.
+   266                                               """
+   267         1    2629299.0    3e+06     16.1      auth_error = check_role('customer')  
+   268         1        200.0    200.0      0.0      if auth_error:
+   269                                                   return auth_error
+   270         1        100.0    100.0      0.0      try:
+   271                                                   # Get the currently logged-in user's identity
+   272         1      44200.0  44200.0      0.3          current_user = get_jwt_identity()
+   273                                           
+   274                                                   # Query the customer by username
+   275         1    2123299.0    2e+06     13.0          customer = User.query.filter_by(username=current_user).first()
+   276                                           
+   277         1        400.0    400.0      0.0          if not customer:
+   278                                                       return jsonify({"error": "Customer not found"}), 404
+   279                                           
+   280                                                   # Get the amount to charge from the request
+   281         1     159800.0 159800.0      1.0          data = request.json
+   282         1        900.0    900.0      0.0          amount = data.get("amount")
+   283                                           
+   284         1        300.0    300.0      0.0          if not amount or amount <= 0:
+   285                                                       return jsonify({"error": "Invalid amount"}), 400
+   286                                           
+   287                                                   # Update wallet balance
+   288         1      27200.0  27200.0      0.2          customer.wallet_balance += amount
+   289         1    7035796.0    7e+06     43.1          db.session.commit()
+   290                                           
+   291         3     212100.0  70700.0      1.3          return jsonify({"message": f"${amount} successfully added to wallet", 
+   292         2    4108998.0    2e+06     25.1                          "wallet_balance": float(customer.wallet_balance)}), 200
+   293                                               except Exception as e:
+   294                                                   db.session.rollback()
+   295                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: view_wishlist
+Timer unit: 1e-09 s
+
+Total time: 0.0168726 s
+File: /app/services/wishlist/routes.py
+Function: view_wishlist at line 64
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    64                                           @wishlist_bp.route('/', methods=['GET'])
+    65                                           @jwt_required()
+    66                                           @line_profile
+    67                                           def view_wishlist():
+    68                                               """
+    69                                               View the items in the user's wishlist (customer only).
+    70                                           
+    71                                               :return: A JSON response with a list of wishlist items, or an error message if access is forbidden.
+    72                                               """
+    73         1    2779810.0    3e+06     16.5      auth_error = authorize_customer()
+    74         1        200.0    200.0      0.0      if auth_error:
+    75                                                   return auth_error
+    76                                           
+    77         1      25100.0  25100.0      0.1      current_user = get_jwt_identity()
+    78         1    2546510.0    3e+06     15.1      user = User.query.filter_by(username=current_user).first()
+    79                                           
+    80                                               # Fetch wishlist items for the user
+    81         1   11327642.0    1e+07     67.1      wishlist = Wishlist.query.filter_by(user_id=user.id).all()
+    82         1      30600.0  30600.0      0.2      result = [entry.to_dict() for entry in wishlist]
+    83                                           
+    84         1     162701.0 162701.0      1.0      return jsonify(result), 200
+
+
+Profiling results for function: deduct_stock
+Timer unit: 1e-09 s
+
+Total time: 0.0207883 s
+File: /app/services/inventory/routes.py
+Function: deduct_stock at line 61
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    61                                           @inventory_bp.route('/<int:item_id>/deduct', methods=['POST'])
+    62                                           @jwt_required()
+    63                                           @line_profile
+    64                                           def deduct_stock(item_id):
+    65                                               """
+    66                                               Deduct a specific quantity of stock from an inventory item (admin only).
+    67                                           
+    68                                               :param item_id: ID of the inventory item to deduct stock from.
+    69                                               :request json: {
+    70                                                   "quantity": "Quantity to deduct"
+    71                                               }
+    72                                               :return: A JSON response with a success message and remaining stock, or an error message.
+    73                                               """
+    74         1    3124817.0    3e+06     15.0      auth_error = authorize_admin()
+    75         1       1800.0   1800.0      0.0      if auth_error:
+    76                                                   return auth_error
+    77                                           
+    78         1        200.0    200.0      0.0      try:
+    79                                                   # Get the item by ID
+    80         1    4760226.0    5e+06     22.9          item = Inventory.query.get(item_id)
+    81         1        300.0    300.0      0.0          if not item:
+    82                                                       return jsonify({"error": "Item not found"}), 404
+    83                                           
+    84         1     188301.0 188301.0      0.9          data = request.json
+    85         1        900.0    900.0      0.0          quantity = data.get('quantity', 0)
+    86                                           
+    87         1        200.0    200.0      0.0          if quantity <= 0:
+    88                                                       return jsonify({"error": "Invalid quantity"}), 400
+    89                                           
+    90         1       4500.0   4500.0      0.0          if item.stock_count < quantity:
+    91                                                       return jsonify({"error": "Insufficient stock"}), 400
+    92                                           
+    93                                                   # Deduct the stock
+    94         1      29100.0  29100.0      0.1          item.stock_count -= quantity
+    95         1    8811847.0    9e+06     42.4          db.session.commit()
+    96                                           
+    97         3     107800.0  35933.3      0.5          return jsonify({
+    98         1    3754321.0    4e+06     18.1              "message": f"{quantity} units deducted from {item.name}",
+    99         1       3800.0   3800.0      0.0              "remaining_stock": item.stock_count
+   100         1        200.0    200.0      0.0          }), 200
+   101                                               except Exception as e:
+   102                                                   db.session.rollback()
+   103                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: update_item
+Timer unit: 1e-09 s
+
+Total time: 0.0162045 s
+File: /app/services/inventory/routes.py
+Function: update_item at line 105
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   105                                           @inventory_bp.route('/<int:item_id>/update', methods=['PATCH'])
+   106                                           @jwt_required()
+   107                                           @line_profile
+   108                                           def update_item(item_id):
+   109                                               """
+   110                                               Update details of an existing inventory item (admin only).
+   111                                           
+   112                                               :param item_id: ID of the inventory item to update.
+   113                                               :request json: {
+   114                                                   "name": "New name (optional)",
+   115                                                   "category": "New category (optional)",
+   116                                                   "price_per_item": "New price per unit (optional)",
+   117                                                   "description": "New description (optional)",
+   118                                                   "stock_count": "New stock count (optional)"
+   119                                               }
+   120                                               :return: A JSON response with a success message and updated item details, or an error message.
+   121                                               """
+   122         1    2533713.0    3e+06     15.6      auth_error = authorize_admin()
+   123         1        400.0    400.0      0.0      if auth_error:
+   124                                                   return auth_error
+   125                                           
+   126         1        200.0    200.0      0.0      try:
+   127                                                   # Get the item by ID
+   128         1    2020511.0    2e+06     12.5          item = Inventory.query.get(item_id)
+   129         1        400.0    400.0      0.0          if not item:
+   130                                                       return jsonify({"error": "Item not found"}), 404
+   131                                           
+   132                                                   # Update fields based on the input
+   133         1     138201.0 138201.0      0.9          data = request.json
+   134         1        500.0    500.0      0.0          if 'name' in data:
+   135                                                       item.name = data['name']
+   136         1        300.0    300.0      0.0          if 'category' in data:
+   137                                                       item.category = data['category']
+   138         1        300.0    300.0      0.0          if 'price_per_item' in data:
+   139         1      28100.0  28100.0      0.2              item.price_per_item = data['price_per_item']
+   140         1        400.0    400.0      0.0          if 'description' in data:
+   141                                                       item.description = data['description']
+   142         1        300.0    300.0      0.0          if 'stock_count' in data:
+   143                                                       item.stock_count = data['stock_count']
+   144                                           
+   145         1    9459651.0    9e+06     58.4          db.session.commit()
+   146                                           
+   147         1    2021511.0    2e+06     12.5          return jsonify({"message": f"Item {item.name} updated successfully", "item": item.to_dict()}), 200
+   148                                               except Exception as e:
+   149                                                   db.session.rollback()
+   150                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_all_customers
+Timer unit: 1e-09 s
+
+Total time: 0.00426934 s
+File: /app/services/customers/routes.py
+Function: get_all_customers at line 194
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   194                                           @user_bp.route('/', methods=['GET'])
+   195                                           @line_profile
+   196                                           def get_all_customers():
+   197                                               """
+   198                                               Retrieve a list of all customers.
+   199                                           
+   200                                               :return: A JSON response with a list of customer details or an error message.
+   201                                               """
+   202         1        600.0    600.0      0.0      try:
+   203                                                   # Query all users
+   204         1    4089047.0    4e+06     95.8          users = User.query.all()
+   205                                           
+   206                                                   # Serialize the result
+   207         2      47000.0  23500.0      1.1          result = [
+   208                                                       {
+   209                                                           "id": user.id,
+   210                                                           "full_name": user.full_name,
+   211                                                           "username": user.username,
+   212                                                           "age": user.age,
+   213                                                           "address": user.address,
+   214                                                           "gender": user.gender,
+   215                                                           "marital_status": user.marital_status,
+   216                                                           "wallet_balance": float(user.wallet_balance),
+   217                                                       }
+   218         1        200.0    200.0      0.0              for user in users
+   219                                                   ]
+   220                                           
+   221         1     132498.0 132498.0      3.1          return jsonify(result), 200
+   222                                               except Exception as e:
+   223                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 0.00397165 s
+File: /app/services/customers/routes.py
+Function: get_customer_by_id at line 225
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   225                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   226                                           @line_profile
+   227                                           def get_customer_by_id(customer_id):
+   228                                               """
+   229                                               Retrieve details of a specific customer by ID.
+   230                                           
+   231                                               :param customer_id: ID of the customer to fetch.
+   232                                               :return: A JSON response with the customer details or an error message.
+   233                                               """
+   234         1        600.0    600.0      0.0      try:
+   235                                                   # Query the customer by ID
+   236         1    3841151.0    4e+06     96.7          user = User.query.get(customer_id)
+   237                                           
+   238         1        400.0    400.0      0.0          if not user:
+   239                                                       return jsonify({"error": "Customer not found"}), 404
+   240                                           
+   241                                                   # Serialize the result
+   242         1       1400.0   1400.0      0.0          result = {
+   243         1       4800.0   4800.0      0.1              "id": user.id,
+   244         1       1500.0   1500.0      0.0              "full_name": user.full_name,
+   245         1       1400.0   1400.0      0.0              "username": user.username,
+   246         1       1400.0   1400.0      0.0              "age": user.age,
+   247         1       2100.0   2100.0      0.1              "address": user.address,
+   248         1       2300.0   2300.0      0.1              "gender": user.gender,
+   249         1       2000.0   2000.0      0.1              "marital_status": user.marital_status,
+   250         1       3300.0   3300.0      0.1              "wallet_balance": float(user.wallet_balance),
+   251                                                   }
+   252                                           
+   253         1     109298.0 109298.0      2.8          return jsonify(result), 200
+   254                                               except Exception as e:
+   255                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 0.00327196 s
+File: /app/services/customers/routes.py
+Function: get_customer_by_id at line 225
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   225                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   226                                           @line_profile
+   227                                           def get_customer_by_id(customer_id):
+   228                                               """
+   229                                               Retrieve details of a specific customer by ID.
+   230                                           
+   231                                               :param customer_id: ID of the customer to fetch.
+   232                                               :return: A JSON response with the customer details or an error message.
+   233                                               """
+   234         1       1100.0   1100.0      0.0      try:
+   235                                                   # Query the customer by ID
+   236         1    3135160.0    3e+06     95.8          user = User.query.get(customer_id)
+   237                                           
+   238         1        400.0    400.0      0.0          if not user:
+   239         1     135298.0 135298.0      4.1              return jsonify({"error": "Customer not found"}), 404
+   240                                           
+   241                                                   # Serialize the result
+   242                                                   result = {
+   243                                                       "id": user.id,
+   244                                                       "full_name": user.full_name,
+   245                                                       "username": user.username,
+   246                                                       "age": user.age,
+   247                                                       "address": user.address,
+   248                                                       "gender": user.gender,
+   249                                                       "marital_status": user.marital_status,
+   250                                                       "wallet_balance": float(user.wallet_balance),
+   251                                                   }
+   252                                           
+   253                                                   return jsonify(result), 200
+   254                                               except Exception as e:
+   255                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 0.00279536 s
+File: /app/services/customers/routes.py
+Function: get_customer_by_id at line 225
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   225                                           @user_bp.route('/<int:customer_id>', methods=['GET'])
+   226                                           @line_profile
+   227                                           def get_customer_by_id(customer_id):
+   228                                               """
+   229                                               Retrieve details of a specific customer by ID.
+   230                                           
+   231                                               :param customer_id: ID of the customer to fetch.
+   232                                               :return: A JSON response with the customer details or an error message.
+   233                                               """
+   234         1       1000.0   1000.0      0.0      try:
+   235                                                   # Query the customer by ID
+   236         1    2657665.0    3e+06     95.1          user = User.query.get(customer_id)
+   237                                           
+   238         1        400.0    400.0      0.0          if not user:
+   239                                                       return jsonify({"error": "Customer not found"}), 404
+   240                                           
+   241                                                   # Serialize the result
+   242         1       1000.0   1000.0      0.0          result = {
+   243         1       5900.0   5900.0      0.2              "id": user.id,
+   244         1       1600.0   1600.0      0.1              "full_name": user.full_name,
+   245         1       1500.0   1500.0      0.1              "username": user.username,
+   246         1       1600.0   1600.0      0.1              "age": user.age,
+   247         1       1700.0   1700.0      0.1              "address": user.address,
+   248         1       1400.0   1400.0      0.1              "gender": user.gender,
+   249         1       1400.0   1400.0      0.1              "marital_status": user.marital_status,
+   250         1       2100.0   2100.0      0.1              "wallet_balance": float(user.wallet_balance),
+   251                                                   }
+   252                                           
+   253         1     118098.0 118098.0      4.2          return jsonify(result), 200
+   254                                               except Exception as e:
+   255                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: charge_wallet
+Timer unit: 1e-09 s
+
+Total time: 0.01601 s
+File: /app/services/customers/routes.py
+Function: charge_wallet at line 257
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   257                                           @user_bp.route('/wallet/charge', methods=['POST'])
+   258                                           @jwt_required()
+   259                                           @line_profile
+   260                                           def charge_wallet():
+   261                                               """
+   262                                               Add funds to the wallet of the logged-in user.
+   263                                           
+   264                                               :request json: {"amount": "Amount to add"}
+   265                                               :return: A JSON response with the updated wallet balance or an error message.
+   266                                               """
+   267         1    2136872.0    2e+06     13.3      auth_error = check_role('customer')  
+   268         1        300.0    300.0      0.0      if auth_error:
+   269                                                   return auth_error
+   270         1        100.0    100.0      0.0      try:
+   271                                                   # Get the currently logged-in user's identity
+   272         1      16800.0  16800.0      0.1          current_user = get_jwt_identity()
+   273                                           
+   274                                                   # Query the customer by username
+   275         1    2075173.0    2e+06     13.0          customer = User.query.filter_by(username=current_user).first()
+   276                                           
+   277         1        300.0    300.0      0.0          if not customer:
+   278                                                       return jsonify({"error": "Customer not found"}), 404
+   279                                           
+   280                                                   # Get the amount to charge from the request
+   281         1     294196.0 294196.0      1.8          data = request.json
+   282         1        800.0    800.0      0.0          amount = data.get("amount")
+   283                                           
+   284         1        400.0    400.0      0.0          if not amount or amount <= 0:
+   285                                                       return jsonify({"error": "Invalid amount"}), 400
+   286                                           
+   287                                                   # Update wallet balance
+   288         1      34100.0  34100.0      0.2          customer.wallet_balance += amount
+   289         1    8061596.0    8e+06     50.4          db.session.commit()
+   290                                           
+   291         3     103199.0  34399.7      0.6          return jsonify({"message": f"${amount} successfully added to wallet", 
+   292         2    3286158.0    2e+06     20.5                          "wallet_balance": float(customer.wallet_balance)}), 200
+   293                                               except Exception as e:
+   294                                                   db.session.rollback()
+   295                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: view_wishlist
+Timer unit: 1e-09 s
+
+Total time: 0.00730025 s
+File: /app/services/wishlist/routes.py
+Function: view_wishlist at line 64
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    64                                           @wishlist_bp.route('/', methods=['GET'])
+    65                                           @jwt_required()
+    66                                           @line_profile
+    67                                           def view_wishlist():
+    68                                               """
+    69                                               View the items in the user's wishlist (customer only).
+    70                                           
+    71                                               :return: A JSON response with a list of wishlist items, or an error message if access is forbidden.
+    72                                               """
+    73         1    2501019.0    3e+06     34.3      auth_error = authorize_customer()
+    74         1        300.0    300.0      0.0      if auth_error:
+    75                                                   return auth_error
+    76                                           
+    77         1      23700.0  23700.0      0.3      current_user = get_jwt_identity()
+    78         1    2119016.0    2e+06     29.0      user = User.query.filter_by(username=current_user).first()
+    79                                           
+    80                                               # Fetch wishlist items for the user
+    81         1    2542119.0    3e+06     34.8      wishlist = Wishlist.query.filter_by(user_id=user.id).all()
+    82         1      13900.0  13900.0      0.2      result = [entry.to_dict() for entry in wishlist]
+    83                                           
+    84         1     100200.0 100200.0      1.4      return jsonify(result), 200
+
