@@ -22,7 +22,7 @@ app = Flask(__name__)
 init_app(app)
 
 # Initialize JWT
-app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY') 
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'fallback-secret-key')
 jwt = JWTManager(app)
 
 # Register blueprints

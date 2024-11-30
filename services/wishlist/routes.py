@@ -4,7 +4,7 @@ from database.db_config import db
 from services.wishlist.models import Wishlist
 from services.inventory.models import Inventory
 from services.customers.models import User
-from utils import profile_route, line_profile
+from utils import profile_route, line_profile, memory_profile
 
 wishlist_bp = Blueprint('wishlist', __name__)
 
@@ -24,6 +24,7 @@ def authorize_customer():
 @wishlist_bp.route('/add', methods=['POST'])
 @jwt_required()
 @profile_route
+@memory_profile
 def add_to_wishlist():
     """
     Add an item to the user's wishlist (customer only).
@@ -64,6 +65,7 @@ def add_to_wishlist():
 @wishlist_bp.route('/', methods=['GET'])
 @jwt_required()
 @line_profile
+@memory_profile
 def view_wishlist():
     """
     View the items in the user's wishlist (customer only).
@@ -86,6 +88,7 @@ def view_wishlist():
 @wishlist_bp.route('/<int:item_id>', methods=['DELETE'])
 @jwt_required()
 @profile_route
+@memory_profile
 def remove_from_wishlist(item_id):
     """
     Remove an item from the user's wishlist (customer only).
@@ -109,3 +112,15 @@ def remove_from_wishlist(item_id):
     db.session.commit()
 
     return jsonify({"message": "Item removed from wishlist"}), 200
+
+
+@wishlist_bp.route('/health', methods=['GET'])
+@profile_route
+@memory_profile
+def health_check():
+    """
+    Health check for the wishlist service.
+
+    :return: A JSON response indicating the status of the service.
+    """
+    return jsonify({"status": "Wishlist service is running"}), 200

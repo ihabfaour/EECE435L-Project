@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from database.db_config import db
 from .models import Inventory
-from utils import line_profile, profile_route
+from utils import line_profile, profile_route, memory_profile
 from services.customers.models import User
 
 inventory_bp = Blueprint('inventory', __name__)
@@ -20,10 +20,10 @@ def authorize_admin():
         return jsonify({"error": "Access forbidden"}), 403
     return None
 
-
 @inventory_bp.route('/add', methods=['POST'])
 @jwt_required()
 @profile_route
+@memory_profile
 def add_inventory_item():
     """
     Add a new item to the inventory (admin only).
@@ -61,6 +61,7 @@ def add_inventory_item():
 @inventory_bp.route('/<int:item_id>/deduct', methods=['POST'])
 @jwt_required()
 @line_profile
+@memory_profile
 def deduct_stock(item_id):
     """
     Deduct a specific quantity of stock from an inventory item (admin only).
@@ -105,6 +106,7 @@ def deduct_stock(item_id):
 @inventory_bp.route('/<int:item_id>/update', methods=['PATCH'])
 @jwt_required()
 @line_profile
+@memory_profile
 def update_item(item_id):
     """
     Update details of an existing inventory item (admin only).
@@ -152,6 +154,7 @@ def update_item(item_id):
 @inventory_bp.route('/', methods=['GET'])
 @jwt_required()
 @profile_route
+@memory_profile
 def get_all_items():
     """
     Retrieve all inventory items.
@@ -168,3 +171,15 @@ def get_all_items():
         return jsonify(result), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@inventory_bp.route('/health', methods=['GET'])
+@profile_route
+@memory_profile
+def health_check():
+    """
+    Health check for the inventory service.
+
+    :return: A JSON response indicating the status of the service.
+    """
+    return jsonify({"status": "Inventory service is running"}), 200

@@ -3,11 +3,10 @@ from .models import User
 from database.db_config import db
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from datetime import timedelta
-from utils import profile_route , line_profile
+from utils import profile_route, line_profile, memory_profile
 import bcrypt
 
 user_bp = Blueprint('user', __name__)
-
 
 # Helper function to check the role
 def check_role(expected_role):
@@ -25,6 +24,7 @@ def check_role(expected_role):
 
 @user_bp.route('/register', methods=['POST'])
 @profile_route
+@memory_profile
 def register_customer():
     """
     Register a new user.
@@ -69,9 +69,9 @@ def register_customer():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-
 @user_bp.route('/login', methods=['POST'])
 @profile_route
+@memory_profile
 def login_customer():
     """
     Log in an existing user.
@@ -103,10 +103,10 @@ def login_customer():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
 @user_bp.route('/delete', methods=['DELETE'])
 @jwt_required()
 @profile_route
+@memory_profile
 def delete_customer():
     """
     Delete the currently logged-in user.
@@ -135,10 +135,10 @@ def delete_customer():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-
 @user_bp.route('/update', methods=['PATCH'])
 @jwt_required()
 @profile_route
+@memory_profile
 def update_customer():
     """
     Update details of the currently logged-in user.
@@ -190,9 +190,9 @@ def update_customer():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-
 @user_bp.route('/', methods=['GET'])
 @line_profile
+@memory_profile
 def get_all_customers():
     """
     Retrieve a list of all customers.
@@ -224,6 +224,7 @@ def get_all_customers():
 
 @user_bp.route('/<int:customer_id>', methods=['GET'])
 @line_profile
+@memory_profile
 def get_customer_by_id(customer_id):
     """
     Retrieve details of a specific customer by ID.
@@ -257,6 +258,7 @@ def get_customer_by_id(customer_id):
 @user_bp.route('/wallet/charge', methods=['POST'])
 @jwt_required()
 @line_profile
+@memory_profile
 def charge_wallet():
     """
     Add funds to the wallet of the logged-in user.
@@ -294,9 +296,9 @@ def charge_wallet():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
-
 @user_bp.route('/wallet/deduct', methods=['POST'])
 @jwt_required()
+@memory_profile
 def deduct_wallet():
     """
     Deduct funds from the wallet of the logged-in user.
@@ -337,3 +339,13 @@ def deduct_wallet():
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
 
+@user_bp.route('/health', methods=['GET'])
+@profile_route
+@memory_profile
+def health_check():
+    """
+    Health check for the user service.
+
+    :return: A JSON response indicating the status of the service.
+    """
+    return jsonify({"status": "User service is running"}), 200

@@ -4,10 +4,14 @@ from database.db_config import db
 from .models import Sale
 from services.customers.models import User
 from services.inventory.models import Inventory
+from utils import profile_route, line_profile, memory_profile
 
 sales_bp = Blueprint('sales', __name__)
 
 @sales_bp.route('/display', methods=['GET'])
+@profile_route  # Adding the route profiler
+@line_profile  # Adding the line profiler (optional, for more granular profiling)
+@memory_profile  # Adding memory profiling
 def display_goods():
     """
     Display a list of all available goods.
@@ -23,6 +27,8 @@ def display_goods():
         return jsonify({"error": str(e)}), 500
 
 @sales_bp.route('/details/<int:item_id>', methods=['GET'])
+@profile_route
+@memory_profile
 def get_good_details(item_id):
     """
     Get details of a specific good.
@@ -40,6 +46,9 @@ def get_good_details(item_id):
 
 @sales_bp.route('/sale', methods=['POST'])
 @jwt_required()
+@profile_route
+@line_profile
+@memory_profile
 def make_sale():
     """
     Make a sale for a specified product and quantity.
@@ -98,6 +107,8 @@ def make_sale():
 
 @sales_bp.route('/history', methods=['GET'])
 @jwt_required()
+@profile_route
+@memory_profile
 def get_purchase_history():
     """
     Retrieve the purchase history for the logged-in customer.

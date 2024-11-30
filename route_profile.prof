@@ -758,3 +758,233 @@
         3    0.000    0.000    0.004    0.001 session.py:2301(execute)
 
 
+         414570 function calls (413970 primitive calls) in 3.018 seconds
+
+   Ordered by: cumulative time
+   List reduced from 536 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      2/1    0.000    0.000    2.724    2.724 routes.py:26(register_customer)
+      3/2    0.000    0.000    2.724    1.362 state_changes.py:95(_go)
+
+
+         150405 function calls (149646 primitive calls) in 0.242 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1109 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.142    0.142 _reloader.py:294(run_step)
+        1    0.005    0.005    0.142    0.142 _reloader.py:65(_find_stat_paths)
+
+
+         1747 function calls (1737 primitive calls) in 0.003 seconds
+
+   Ordered by: cumulative time
+   List reduced from 422 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.003    0.003 query.py:2720(first)
+        1    0.000    0.000    0.002    0.002 query.py:2842(_iter)
+
+
+         2154 function calls (2124 primitive calls) in 0.230 seconds
+
+   Ordered by: cumulative time
+   List reduced from 586 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.222    0.222    0.222    0.222 {built-in method bcrypt._bcrypt.hashpw}
+     14/2    0.000    0.000    0.006    0.003 state_changes.py:95(_go)
+
+
+         1474 function calls (1464 primitive calls) in 0.232 seconds
+
+   Ordered by: cumulative time
+   List reduced from 424 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.232    0.232 routes.py:73(login_customer)
+        1    0.230    0.230    0.230    0.230 {built-in method bcrypt._bcrypt.checkpw}
+
+
+         171848 function calls (171137 primitive calls) in 0.212 seconds
+
+   Ordered by: cumulative time
+   List reduced from 899 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.001    0.001    0.212    0.212 routes.py:73(login_customer)
+        1    0.006    0.006    0.174    0.174 _reloader.py:65(_find_stat_paths)
+
+
+         12190 function calls (11482 primitive calls) in 0.210 seconds
+
+   Ordered by: cumulative time
+   List reduced from 906 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.190    0.190    0.190    0.190 {built-in method bcrypt._bcrypt.checkpw}
+        1    0.000    0.000    0.018    0.018 query.py:2842(_iter)
+
+
+         110663 function calls (109583 primitive calls) in 0.207 seconds
+
+   Ordered by: cumulative time
+   List reduced from 489 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     3111    0.090    0.000    0.090    0.000 {built-in method nt.stat}
+     9321    0.028    0.000    0.028    0.000 {built-in method builtins.next}
+
+
+         3168 function calls (3093 primitive calls) in 0.012 seconds
+
+   Ordered by: cumulative time
+   List reduced from 723 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     14/2    0.000    0.000    0.010    0.005 state_changes.py:95(_go)
+        1    0.000    0.000    0.010    0.010 scoping.py:559(commit)
+
+
+         1944 function calls (1915 primitive calls) in 0.003 seconds
+
+   Ordered by: cumulative time
+   List reduced from 460 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.002    0.002 context.py:283(orm_execute_statement)
+        1    0.000    0.000    0.002    0.002 base.py:1372(execute)
+
+
+         334381 function calls (334359 primitive calls) in 2.225 seconds
+
+   Ordered by: cumulative time
+   List reduced from 419 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      2/1    0.001    0.000    2.018    2.018 utils.py:52(wrapper)
+        2    0.305    0.153    1.328    0.664 selectors.py:319(select)
+
+
+         308374 function calls (308112 primitive calls) in 2.019 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1012 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    1.527    1.527 utils.py:77(wrapper)
+        2    0.000    0.000    0.998    0.499 memory_profiler.py:269(memory_usage)
+
+
+         339623 function calls (339439 primitive calls) in 2.347 seconds
+
+   Ordered by: cumulative time
+   List reduced from 946 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      2/1    0.503    0.251    2.036    2.036 utils.py:52(wrapper)
+      2/1    0.000    0.000    1.532    1.532 utils.py:77(wrapper)
+
+
+         339433 function calls (339250 primitive calls) in 2.034 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1009 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      2/1    0.001    0.000    2.033    2.033 utils.py:52(wrapper)
+        2    0.035    0.018    1.217    0.608 selectors.py:319(select)
+
+
+         7770 function calls (7603 primitive calls) in 0.015 seconds
+
+   Ordered by: cumulative time
+   List reduced from 889 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.015    0.015 routes.py:24(add_to_wishlist)
+        5    0.000    0.000    0.008    0.002 session.py:2247(execute)
+
+
+         4173 function calls (4096 primitive calls) in 0.010 seconds
+
+   Ordered by: cumulative time
+   List reduced from 591 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.010    0.010 routes.py:86(remove_from_wishlist)
+     16/4    0.000    0.000    0.006    0.001 state_changes.py:95(_go)
+
+
+         3873 function calls (3845 primitive calls) in 0.005 seconds
+
+   Ordered by: cumulative time
+   List reduced from 488 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        2    0.000    0.000    0.004    0.002 query.py:2720(first)
+        2    0.000    0.000    0.003    0.001 query.py:2842(_iter)
+
+
+         3401 function calls (3348 primitive calls) in 0.008 seconds
+
+   Ordered by: cumulative time
+   List reduced from 639 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.008    0.008 routes.py:139(update_customer)
+     15/3    0.000    0.000    0.005    0.002 state_changes.py:95(_go)
+
+
+         3300 function calls (3253 primitive calls) in 0.009 seconds
+
+   Ordered by: cumulative time
+   List reduced from 601 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.009    0.009 routes.py:107(delete_customer)
+     15/4    0.000    0.000    0.007    0.002 state_changes.py:95(_go)
+
+
+         168848 function calls (168774 primitive calls) in 2.522 seconds
+
+   Ordered by: cumulative time
+   List reduced from 698 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        3    0.034    0.011    2.847    0.949 selectors.py:319(select)
+        2    0.003    0.001    0.757    0.378 memory_profiler.py:269(memory_usage)
+
+
+         3111 function calls (3070 primitive calls) in 0.006 seconds
+
+   Ordered by: cumulative time
+   List reduced from 516 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.006    0.006 routes.py:107(delete_customer)
+     15/3    0.000    0.000    0.004    0.001 state_changes.py:95(_go)
+
+
+         168413 function calls (168396 primitive calls) in 2.047 seconds
+
+   Ordered by: cumulative time
+   List reduced from 412 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      2/1    0.000    0.000    2.046    2.046 utils.py:52(wrapper)
+        3    0.002    0.001    1.745    0.582 selectors.py:319(select)
+
+
+         332783 function calls (332759 primitive calls) in 2.015 seconds
+
+   Ordered by: cumulative time
+   List reduced from 412 to 2 due to restriction <2>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        2    0.058    0.029    1.121    0.560 selectors.py:319(select)
+      3/2    0.004    0.001    0.817    0.409 memory_profiler.py:269(memory_usage)
+
+

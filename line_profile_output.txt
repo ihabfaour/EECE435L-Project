@@ -976,3 +976,375 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     83                                           
     84         1     100200.0 100200.0      1.4      return jsonify(result), 200
 
+
+Profiling results for function: charge_wallet
+Timer unit: 1e-07 s
+
+Total time: 0.0203738 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\services\customers\routes.py
+Function: charge_wallet at line 257
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   257                                           @user_bp.route('/wallet/charge', methods=['POST'])
+   258                                           @jwt_required()
+   259                                           @line_profile
+   260                                           def charge_wallet():
+   261                                               """
+   262                                               Add funds to the wallet of the logged-in user.
+   263                                           
+   264                                               :request json: {"amount": "Amount to add"}
+   265                                               :return: A JSON response with the updated wallet balance or an error message.
+   266                                               """
+   267         1      32899.0  32899.0     16.1      auth_error = check_role('customer')  
+   268         1          3.0      3.0      0.0      if auth_error:
+   269                                                   return auth_error
+   270         1          2.0      2.0      0.0      try:
+   271                                                   # Get the currently logged-in user's identity
+   272         1        154.0    154.0      0.1          current_user = get_jwt_identity()
+   273                                           
+   274                                                   # Query the customer by username
+   275         1      17920.0  17920.0      8.8          customer = User.query.filter_by(username=current_user).first()
+   276                                           
+   277         1          5.0      5.0      0.0          if not customer:
+   278                                                       return jsonify({"error": "Customer not found"}), 404
+   279                                           
+   280                                                   # Get the amount to charge from the request
+   281         1       2246.0   2246.0      1.1          data = request.json
+   282         1          5.0      5.0      0.0          amount = data.get("amount")
+   283                                           
+   284         1          8.0      8.0      0.0          if not amount or amount <= 0:
+   285                                                       return jsonify({"error": "Invalid amount"}), 400
+   286                                           
+   287                                                   # Update wallet balance
+   288         1        507.0    507.0      0.2          customer.wallet_balance += amount
+   289         1     106153.0 106153.0     52.1          db.session.commit()
+   290                                           
+   291         3       2325.0    775.0      1.1          return jsonify({"message": f"${amount} successfully added to wallet", 
+   292         2      41511.0  20755.5     20.4                          "wallet_balance": float(customer.wallet_balance)}), 200
+   293                                               except Exception as e:
+   294                                                   db.session.rollback()
+   295                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: display_goods
+Timer unit: 1e-07 s
+
+Total time: 2.01644 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1   10056602.0    1e+07     49.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1      34381.0  34381.0      0.2          result = func(*args, **kwargs)
+    81         1   10063859.0    1e+07     49.9          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         2       9077.0   4538.5      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1        165.0    165.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1        243.0    243.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1         74.0     74.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1         14.0     14.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-07 s
+
+Total time: 2.03413 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1   10059673.0    1e+07     49.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1     209602.0 209602.0      1.0          result = func(*args, **kwargs)
+    81         1   10054311.0    1e+07     49.4          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         2      17402.0   8701.0      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1        150.0    150.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1        115.0    115.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1         62.0     62.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1         15.0     15.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-07 s
+
+Total time: 2.03497 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1   10067994.0    1e+07     49.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1     212241.0 212241.0      1.0          result = func(*args, **kwargs)
+    81         1   10064185.0    1e+07     49.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         2       4915.0   2457.5      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1        156.0    156.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1        128.0    128.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1         65.0     65.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1         11.0     11.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-07 s
+
+Total time: 2.03227 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1   10077177.0    1e+07     49.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1     183786.0 183786.0      0.9          result = func(*args, **kwargs)
+    81         1   10056814.0    1e+07     49.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         2       4546.0   2273.0      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1        133.0    133.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1        119.0    119.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1         67.0     67.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1         11.0     11.0      0.0          return result
+
+
+Profiling results for function: view_wishlist
+Timer unit: 1e-07 s
+
+Total time: 0.0073739 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\services\wishlist\routes.py
+Function: view_wishlist at line 64
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    64                                           @wishlist_bp.route('/', methods=['GET'])
+    65                                           @jwt_required()
+    66                                           @line_profile
+    67                                           def view_wishlist():
+    68                                               """
+    69                                               View the items in the user's wishlist (customer only).
+    70                                           
+    71                                               :return: A JSON response with a list of wishlist items, or an error message if access is forbidden.
+    72                                               """
+    73         1      29337.0  29337.0     39.8      auth_error = authorize_customer()
+    74         1          3.0      3.0      0.0      if auth_error:
+    75                                                   return auth_error
+    76                                           
+    77         1        191.0    191.0      0.3      current_user = get_jwt_identity()
+    78         1      17242.0  17242.0     23.4      user = User.query.filter_by(username=current_user).first()
+    79                                           
+    80                                               # Fetch wishlist items for the user
+    81         1      25178.0  25178.0     34.1      wishlist = Wishlist.query.filter_by(user_id=user.id).all()
+    82         2         93.0     46.5      0.1      result = [entry.to_dict() for entry in wishlist]
+    83                                           
+    84         1       1695.0   1695.0      2.3      return jsonify(result), 200
+
+
+Profiling results for function: update_item
+Timer unit: 1e-07 s
+
+Total time: 0.0027261 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\services\inventory\routes.py
+Function: update_item at line 105
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   105                                           @inventory_bp.route('/<int:item_id>/update', methods=['PATCH'])
+   106                                           @jwt_required()
+   107                                           @line_profile
+   108                                           def update_item(item_id):
+   109                                               """
+   110                                               Update details of an existing inventory item (admin only).
+   111                                           
+   112                                               :param item_id: ID of the inventory item to update.
+   113                                               :request json: {
+   114                                                   "name": "New name (optional)",
+   115                                                   "category": "New category (optional)",
+   116                                                   "price_per_item": "New price per unit (optional)",
+   117                                                   "description": "New description (optional)",
+   118                                                   "stock_count": "New stock count (optional)"
+   119                                               }
+   120                                               :return: A JSON response with a success message and updated item details, or an error message.
+   121                                               """
+   122         1      27253.0  27253.0    100.0      auth_error = authorize_admin()
+   123         1          4.0      4.0      0.0      if auth_error:
+   124         1          4.0      4.0      0.0          return auth_error
+   125                                           
+   126                                               try:
+   127                                                   # Get the item by ID
+   128                                                   item = Inventory.query.get(item_id)
+   129                                                   if not item:
+   130                                                       return jsonify({"error": "Item not found"}), 404
+   131                                           
+   132                                                   # Update fields based on the input
+   133                                                   data = request.json
+   134                                                   if 'name' in data:
+   135                                                       item.name = data['name']
+   136                                                   if 'category' in data:
+   137                                                       item.category = data['category']
+   138                                                   if 'price_per_item' in data:
+   139                                                       item.price_per_item = data['price_per_item']
+   140                                                   if 'description' in data:
+   141                                                       item.description = data['description']
+   142                                                   if 'stock_count' in data:
+   143                                                       item.stock_count = data['stock_count']
+   144                                           
+   145                                                   db.session.commit()
+   146                                           
+   147                                                   return jsonify({"message": f"Item {item.name} updated successfully", "item": item.to_dict()}), 200
+   148                                               except Exception as e:
+   149                                                   db.session.rollback()
+   150                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: update_item
+Timer unit: 1e-07 s
+
+Total time: 0.0116109 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\services\inventory\routes.py
+Function: update_item at line 105
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   105                                           @inventory_bp.route('/<int:item_id>/update', methods=['PATCH'])
+   106                                           @jwt_required()
+   107                                           @line_profile
+   108                                           def update_item(item_id):
+   109                                               """
+   110                                               Update details of an existing inventory item (admin only).
+   111                                           
+   112                                               :param item_id: ID of the inventory item to update.
+   113                                               :request json: {
+   114                                                   "name": "New name (optional)",
+   115                                                   "category": "New category (optional)",
+   116                                                   "price_per_item": "New price per unit (optional)",
+   117                                                   "description": "New description (optional)",
+   118                                                   "stock_count": "New stock count (optional)"
+   119                                               }
+   120                                               :return: A JSON response with a success message and updated item details, or an error message.
+   121                                               """
+   122         1      23198.0  23198.0     20.0      auth_error = authorize_admin()
+   123         1          3.0      3.0      0.0      if auth_error:
+   124                                                   return auth_error
+   125                                           
+   126         1          2.0      2.0      0.0      try:
+   127                                                   # Get the item by ID
+   128         1      15833.0  15833.0     13.6          item = Inventory.query.get(item_id)
+   129         1          4.0      4.0      0.0          if not item:
+   130                                                       return jsonify({"error": "Item not found"}), 404
+   131                                           
+   132                                                   # Update fields based on the input
+   133         1       1276.0   1276.0      1.1          data = request.json
+   134         1          4.0      4.0      0.0          if 'name' in data:
+   135                                                       item.name = data['name']
+   136         1          3.0      3.0      0.0          if 'category' in data:
+   137                                                       item.category = data['category']
+   138         1         77.0     77.0      0.1          if 'price_per_item' in data:
+   139         1        283.0    283.0      0.2              item.price_per_item = data['price_per_item']
+   140         1          5.0      5.0      0.0          if 'description' in data:
+   141                                                       item.description = data['description']
+   142         1          4.0      4.0      0.0          if 'stock_count' in data:
+   143         1         83.0     83.0      0.1              item.stock_count = data['stock_count']
+   144                                           
+   145         1      58377.0  58377.0     50.3          db.session.commit()
+   146                                           
+   147         1      16957.0  16957.0     14.6          return jsonify({"message": f"Item {item.name} updated successfully", "item": item.to_dict()}), 200
+   148                                               except Exception as e:
+   149                                                   db.session.rollback()
+   150                                                   return jsonify({"error": str(e)}), 500
+
+
+Profiling results for function: view_wishlist
+Timer unit: 1e-07 s
+
+Total time: 0.0036323 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\services\wishlist\routes.py
+Function: view_wishlist at line 64
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    64                                           @wishlist_bp.route('/', methods=['GET'])
+    65                                           @jwt_required()
+    66                                           @line_profile
+    67                                           def view_wishlist():
+    68                                               """
+    69                                               View the items in the user's wishlist (customer only).
+    70                                           
+    71                                               :return: A JSON response with a list of wishlist items, or an error message if access is forbidden.
+    72                                               """
+    73         1      36315.0  36315.0    100.0      auth_error = authorize_customer()
+    74         1          5.0      5.0      0.0      if auth_error:
+    75         1          3.0      3.0      0.0          return auth_error
+    76                                           
+    77                                               current_user = get_jwt_identity()
+    78                                               user = User.query.filter_by(username=current_user).first()
+    79                                           
+    80                                               # Fetch wishlist items for the user
+    81                                               wishlist = Wishlist.query.filter_by(user_id=user.id).all()
+    82                                               result = [entry.to_dict() for entry in wishlist]
+    83                                           
+    84                                               return jsonify(result), 200
+
+
+Profiling results for function: display_goods
+Timer unit: 1e-07 s
+
+Total time: 2.04458 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1   10210166.0    1e+07     49.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1     169274.0 169274.0      0.8          result = func(*args, **kwargs)
+    81         1   10060725.0    1e+07     49.2          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         2       5272.0   2636.0      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1        164.0    164.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1        133.0    133.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1         66.0     66.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1         14.0     14.0      0.0          return result
+
+
+Profiling results for function: display_goods
+Timer unit: 1e-07 s
+
+Total time: 2.01402 s
+File: C:\Users\naelt\OneDrive\Desktop\Docs\EECE435L\Project\ecommerce_Faour_Haidar\utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1   10047438.0    1e+07     49.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1      25645.0  25645.0      0.1          result = func(*args, **kwargs)
+    81         1   10061921.0    1e+07     50.0          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         2       4876.0   2438.0      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1        138.0    138.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1        111.0    111.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1         58.0     58.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1         13.0     13.0      0.0          return result
+

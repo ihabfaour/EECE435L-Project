@@ -9,6 +9,7 @@ class Review(db.Model):
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String(500), nullable=False)
     timestamp = db.Column(db.DateTime, default=db.func.now())
+    status = db.Column(db.String(50), nullable=False, default='pending')  # New field for moderation status
 
     def to_dict(self):
         return {
@@ -17,5 +18,6 @@ class Review(db.Model):
             "customer_username": self.customer_username,
             "rating": self.rating,
             "comment": self.comment,
-            "timestamp": self.timestamp
+            "timestamp": self.timestamp,
+            "status": self.status
         }
