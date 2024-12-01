@@ -17,7 +17,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the service code into the container
 COPY . /app
-COPY ../../utils /app/utils
 
 # Expose the port Flask runs on
 EXPOSE 5000
