@@ -43,5 +43,37 @@ services:
       - .:/app
     entrypoint: ["pytest", "-v", "--maxfail=1", "--disable-warnings"]
 
+  customers:
+    build:
+      context: ./services/customers
+      dockerfile: Dockerfile
+    container_name: customers-service
+    restart: always
+    ports:
+      - "5001:5001"
+    environment:
+      FLASK_APP: routes.py
+      FLASK_ENV: development
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql
+
+  inventory:
+    build:
+      context: ./services/inventory
+      dockerfile: Dockerfile
+    container_name: inventory-service
+    restart: always
+    ports:
+      - "5002:5002"
+    environment:
+      FLASK_APP: routes.py
+      FLASK_ENV: development
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql
+      
 volumes:
   mysql_data:

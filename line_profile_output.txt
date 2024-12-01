@@ -1348,3 +1348,1419 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
     88                                           
     89         1         13.0     13.0      0.0          return result
 
+
+Profiling results for function: deduct_stock
+Timer unit: 1e-09 s
+
+Total time: 2.06214 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007707525.0    1e+09     48.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   33267697.0    3e+07      1.6          result = func(*args, **kwargs)
+    81         1 1006954517.0    1e+09     48.8          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   12943516.0    1e+07      0.6          with open("memory_profile_output.txt", "a") as file:
+    85         1       5100.0   5100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      16000.0  16000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1248012.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        900.0    900.0      0.0          return result
+
+
+Profiling results for function: update_item
+Timer unit: 1e-09 s
+
+Total time: 2.07034 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005959757.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   31762089.0    3e+07      1.5          result = func(*args, **kwargs)
+    81         1 1006880266.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   23446814.0    2e+07      1.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       7100.0   7100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      29100.0  29100.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2251721.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1800.0   1800.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.06255 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006022159.0    1e+09     48.8          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   36415132.0    4e+07      1.8          result = func(*args, **kwargs)
+    81         1 1006334961.0    1e+09     48.8          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   11968809.0    1e+07      0.6          with open("memory_profile_output.txt", "a") as file:
+    85         1       8000.0   8000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      18700.0  18700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1784316.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1500.0   1500.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.02493 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005284272.0    1e+09     49.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    8458776.0    8e+06      0.4          result = func(*args, **kwargs)
+    81         1 1007916356.0    1e+09     49.8          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    1003909.0    1e+06      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1      10000.0  10000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      17201.0  17201.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2235320.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1600.0   1600.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.03458 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006317142.0    1e+09     49.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   18583067.0    2e+07      0.9          result = func(*args, **kwargs)
+    81         1 1007984657.0    1e+09     49.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1     888408.0 888408.0      0.0          with open("memory_profile_output.txt", "a") as file:
+    85         1       6000.0   6000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      12800.0  12800.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     790807.0 790807.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: update_review
+Timer unit: 1e-09 s
+
+Total time: 2.04068 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007202350.0    1e+09     49.4          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   23132308.0    2e+07      1.1          result = func(*args, **kwargs)
+    81         1 1005098431.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    3347930.0    3e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1      10000.0  10000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      24500.0  24500.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1859317.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2300.0   2300.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.03544 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1008145958.0    1e+09     49.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   16655249.0    2e+07      0.8          result = func(*args, **kwargs)
+    81         1 1005948414.0    1e+09     49.4          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    2825024.0    3e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       9800.0   9800.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      23100.0  23100.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1830515.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.05504 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006282998.0    1e+09     49.0          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   22446185.0    2e+07      1.1          result = func(*args, **kwargs)
+    81         1 1005056489.0    1e+09     48.9          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   19218958.0    2e+07      0.9          with open("memory_profile_output.txt", "a") as file:
+    85         1      10400.0  10400.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      25001.0  25001.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1998216.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1200.0   1200.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.04301 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006526315.0    1e+09     49.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   17278550.0    2e+07      0.8          result = func(*args, **kwargs)
+    81         1 1007311321.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   11043296.0    1e+07      0.5          with open("memory_profile_output.txt", "a") as file:
+    85         1       6100.0   6100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      14300.0  14300.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     833107.0 833107.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.05592 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007155620.0    1e+09     49.0          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   13388416.0    1e+07      0.7          result = func(*args, **kwargs)
+    81         1 1006398446.0    1e+09     49.0          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   26803740.0    3e+07      1.3          with open("memory_profile_output.txt", "a") as file:
+    85         1      10000.0  10000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      24600.0  24600.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2133519.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.04386 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005733383.0    1e+09     49.2          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   20163280.0    2e+07      1.0          result = func(*args, **kwargs)
+    81         1 1004558772.0    1e+09     49.2          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   12479512.0    1e+07      0.6          with open("memory_profile_output.txt", "a") as file:
+    85         1       6800.0   6800.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      14500.0  14500.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     904508.0 904508.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: deduct_stock
+Timer unit: 1e-09 s
+
+Total time: 2.06412 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005929177.0    1e+09     48.7          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   18108249.0    2e+07      0.9          result = func(*args, **kwargs)
+    81         1 1005857177.0    1e+09     48.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   32044364.0    3e+07      1.6          with open("memory_profile_output.txt", "a") as file:
+    85         1       6600.0   6600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      27500.0  27500.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2145418.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1600.0   1600.0      0.0          return result
+
+
+Profiling results for function: update_item
+Timer unit: 1e-09 s
+
+Total time: 2.04307 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006591782.0    1e+09     49.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   12518403.0    1e+07      0.6          result = func(*args, **kwargs)
+    81         1 1006978095.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   15964836.0    2e+07      0.8          with open("memory_profile_output.txt", "a") as file:
+    85         1       5400.0   5400.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      15500.0  15500.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     996609.0 996609.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        800.0    800.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.05863 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1008442114.0    1e+09     49.0          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   24401008.0    2e+07      1.2          result = func(*args, **kwargs)
+    81         1 1007792608.0    1e+09     49.0          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   16627642.0    2e+07      0.8          with open("memory_profile_output.txt", "a") as file:
+    85         1       7500.0   7500.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      16600.0  16600.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1336411.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1200.0   1200.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.03007 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006329496.0    1e+09     49.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    8537173.0    9e+06      0.4          result = func(*args, **kwargs)
+    81         1 1008401414.0    1e+09     49.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    4181236.0    4e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1      13600.0  13600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      33300.0  33300.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2571222.0    3e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1800.0   1800.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.05071 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006595645.0    1e+09     49.1          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   29876939.0    3e+07      1.5          result = func(*args, **kwargs)
+    81         1 1007851382.0    1e+09     49.1          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    3816618.0    4e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1      12600.0  12600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      31000.0  31000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2527612.0    3e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1900.0   1900.0      0.0          return result
+
+
+Profiling results for function: update_review
+Timer unit: 1e-09 s
+
+Total time: 2.03861 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006709976.0    1e+09     49.4          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   22127303.0    2e+07      1.1          result = func(*args, **kwargs)
+    81         1 1005847772.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    2469312.0    2e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       8000.0   8000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      18500.0  18500.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1426407.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.03462 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006728476.0    1e+09     49.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   17880684.0    2e+07      0.9          result = func(*args, **kwargs)
+    81         1 1007950282.0    1e+09     49.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    1240506.0    1e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       6400.0   6400.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      13500.0  13500.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     799803.0 799803.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.07713 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006253432.0    1e+09     48.4          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   25629317.0    3e+07      1.2          result = func(*args, **kwargs)
+    81         1 1007778345.0    1e+09     48.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   35269599.0    4e+07      1.7          with open("memory_profile_output.txt", "a") as file:
+    85         1      10900.0  10900.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      24701.0  24701.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2157718.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1700.0   1700.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.0492 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006590615.0    1e+09     49.1          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   13686113.0    1e+07      0.7          result = func(*args, **kwargs)
+    81         1 1008071042.0    1e+09     49.2          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   19780664.0    2e+07      1.0          with open("memory_profile_output.txt", "a") as file:
+    85         1       6300.0   6300.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      26900.0  26900.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1037809.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1200.0   1200.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.0673 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007572837.0    1e+09     48.7          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   14171217.0    1e+07      0.7          result = func(*args, **kwargs)
+    81         1 1007694139.0    1e+09     48.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   35835397.0    4e+07      1.7          with open("memory_profile_output.txt", "a") as file:
+    85         1      10500.0  10500.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      25700.0  25700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1987517.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1300.0   1300.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.07346 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007070383.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   26715001.0    3e+07      1.3          result = func(*args, **kwargs)
+    81         1 1008016790.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   29433422.0    3e+07      1.4          with open("memory_profile_output.txt", "a") as file:
+    85         1      11000.0  11000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      25000.0  25000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2184417.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1500.0   1500.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.07079 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006703378.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   35350355.0    4e+07      1.7          result = func(*args, **kwargs)
+    81         1 1008968657.0    1e+09     48.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   18648335.0    2e+07      0.9          with open("memory_profile_output.txt", "a") as file:
+    85         1      26600.0  26600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      48700.0  48700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1041608.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        600.0    600.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.05463 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005399786.0    1e+09     48.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   23821790.0    2e+07      1.2          result = func(*args, **kwargs)
+    81         1 1004809781.0    1e+09     48.9          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   19651156.0    2e+07      1.0          with open("memory_profile_output.txt", "a") as file:
+    85         1       6500.0   6500.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      13000.0  13000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     921907.0 921907.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1100.0   1100.0      0.0          return result
+
+
+Profiling results for function: display_goods
+Timer unit: 1e-09 s
+
+Total time: 2.03697 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006689214.0    1e+09     49.4          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    3365622.0    3e+06      0.2          result = func(*args, **kwargs)
+    81         1 1005289939.0    1e+09     49.4          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   20273632.0    2e+07      1.0          with open("memory_profile_output.txt", "a") as file:
+    85         1       6500.0   6500.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      15700.0  15700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1331109.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        900.0    900.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.07256 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006767442.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   38360219.0    4e+07      1.9          result = func(*args, **kwargs)
+    81         1 1006647143.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   19837906.0    2e+07      1.0          with open("memory_profile_output.txt", "a") as file:
+    85         1       6100.0   6100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      12800.0  12800.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     930196.0 930196.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        900.0    900.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.0293 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006786531.0    1e+09     49.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   12236668.0    1e+07      0.6          result = func(*args, **kwargs)
+    81         1 1005841644.0    1e+09     49.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    2828216.0    3e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       8400.0   8400.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      18300.0  18300.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1578009.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1200.0   1200.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.02358 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005491042.0    1e+09     49.7          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    9299851.0    9e+06      0.5          result = func(*args, **kwargs)
+    81         1 1005781944.0    1e+09     49.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    1749210.0    2e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       6900.0   6900.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      15100.0  15100.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1236107.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1800.0   1800.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.03082 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005904170.0    1e+09     49.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   16824941.0    2e+07      0.8          result = func(*args, **kwargs)
+    81         1 1005611412.0    1e+09     49.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    1457495.0    1e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       7300.0   7300.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      16400.0  16400.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     994596.0 994596.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1100.0   1100.0      0.0          return result
+
+
+Profiling results for function: get_all_customers
+Timer unit: 1e-09 s
+
+Total time: 2.04359 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006149928.0    1e+09     49.2          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    7603955.0    8e+06      0.4          result = func(*args, **kwargs)
+    81         1 1005874958.0    1e+09     49.2          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   22916462.0    2e+07      1.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       4799.0   4799.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      31800.0  31800.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1009481.0    1e+06      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1100.0   1100.0      0.0          return result
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 2.05781 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006063666.0    1e+09     48.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    8970437.0    9e+06      0.4          result = func(*args, **kwargs)
+    81         1 1005779778.0    1e+09     48.9          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   35146346.0    4e+07      1.7          with open("memory_profile_output.txt", "a") as file:
+    85         1       6100.0   6100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      21000.0  21000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1815908.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2000.0   2000.0      0.0          return result
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 2.05969 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006092533.0    1e+09     48.8          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    3073894.0    3e+06      0.1          result = func(*args, **kwargs)
+    81         1 1004817536.0    1e+09     48.8          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   43559319.0    4e+07      2.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       6800.0   6800.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      26200.0  26200.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2114496.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1700.0   1700.0      0.0          return result
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 2.04494 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006667432.0    1e+09     49.2          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    3004194.0    3e+06      0.1          result = func(*args, **kwargs)
+    81         1 1005583534.0    1e+09     49.2          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   28798147.0    3e+07      1.4          with open("memory_profile_output.txt", "a") as file:
+    85         1       4200.0   4200.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      14400.0  14400.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     865998.0 865998.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        300.0    300.0      0.0          return result
+
+
+Profiling results for function: charge_wallet
+Timer unit: 1e-09 s
+
+Total time: 2.07566 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007948944.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   15789137.0    2e+07      0.8          result = func(*args, **kwargs)
+    81         1 1007222053.0    1e+09     48.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   42612399.0    4e+07      2.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       7100.0   7100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      26300.0  26300.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2056305.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1700.0   1700.0      0.0          return result
+
+
+Profiling results for function: view_wishlist
+Timer unit: 1e-09 s
+
+Total time: 2.06954 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006082115.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    6507824.0    7e+06      0.3          result = func(*args, **kwargs)
+    81         1 1007093773.0    1e+09     48.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   47403072.0    5e+07      2.3          with open("memory_profile_output.txt", "a") as file:
+    85         1       6800.0   6800.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      25600.0  25600.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2420508.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: deduct_stock
+Timer unit: 1e-09 s
+
+Total time: 2.09623 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006253146.0    1e+09     48.0          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   37408125.0    4e+07      1.8          result = func(*args, **kwargs)
+    81         1 1004470340.0    1e+09     47.9          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   46062754.0    5e+07      2.2          with open("memory_profile_output.txt", "a") as file:
+    85         1       5600.0   5600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      23700.0  23700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2000106.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1500.0   1500.0      0.0          return result
+
+
+Profiling results for function: update_item
+Timer unit: 1e-09 s
+
+Total time: 2.09033 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006115805.0    1e+09     48.1          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   25451422.0    3e+07      1.2          result = func(*args, **kwargs)
+    81         1 1007252601.0    1e+09     48.2          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   49436748.0    5e+07      2.4          with open("memory_profile_output.txt", "a") as file:
+    85         1       5700.0   5700.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      23999.0  23999.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2038994.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1900.0   1900.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.09878 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006727202.0    1e+09     48.0          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   39253880.0    4e+07      1.9          result = func(*args, **kwargs)
+    81         1 1006741347.0    1e+09     48.0          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   43965113.0    4e+07      2.1          with open("memory_profile_output.txt", "a") as file:
+    85         1      10200.0  10200.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      24100.0  24100.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2053806.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.02687 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006821043.0    1e+09     49.7          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    8126912.0    8e+06      0.4          result = func(*args, **kwargs)
+    81         1 1007281835.0    1e+09     49.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    2745104.0    3e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       9000.0   9000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      20900.0  20900.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1866703.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1600.0   1600.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.044 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006277033.0    1e+09     49.2          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   28177443.0    3e+07      1.4          result = func(*args, **kwargs)
+    81         1 1006824434.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    1533302.0    2e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       7000.0   7000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      16000.0  16000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1162702.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        500.0    500.0      0.0          return result
+
+
+Profiling results for function: update_review
+Timer unit: 1e-09 s
+
+Total time: 2.04227 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007418135.0    1e+09     49.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   21238432.0    2e+07      1.0          result = func(*args, **kwargs)
+    81         1 1007259735.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    3969606.0    4e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1      12800.0  12800.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      28600.0  28600.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2342303.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1500.0   1500.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.04325 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007390135.0    1e+09     49.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   23190435.0    2e+07      1.1          result = func(*args, **kwargs)
+    81         1 1006520995.0    1e+09     49.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    3217907.0    3e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1      16400.0  16400.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      40600.0  40600.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2868207.0    3e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2900.0   2900.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.07523 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1008322363.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   28072863.0    3e+07      1.4          result = func(*args, **kwargs)
+    81         1 1008250563.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   29734667.0    3e+07      1.4          with open("memory_profile_output.txt", "a") as file:
+    85         1       6300.0   6300.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      12700.0  12700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     831301.0 831301.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.10252 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006175503.0    1e+09     47.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   33899381.0    3e+07      1.6          result = func(*args, **kwargs)
+    81         1 1007995607.0    1e+09     47.9          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   52461825.0    5e+07      2.5          with open("memory_profile_output.txt", "a") as file:
+    85         1      10500.0  10500.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      22800.0  22800.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1955305.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2300.0   2300.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.07098 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006255003.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    6135814.0    6e+06      0.3          result = func(*args, **kwargs)
+    81         1 1005939132.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   50588850.0    5e+07      2.4          with open("memory_profile_output.txt", "a") as file:
+    85         1      10800.0  10800.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      24900.0  24900.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2026226.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.08622 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007242635.0    1e+09     48.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   16468411.0    2e+07      0.8          result = func(*args, **kwargs)
+    81         1 1008596886.0    1e+09     48.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   51718145.0    5e+07      2.5          with open("memory_profile_output.txt", "a") as file:
+    85         1       9701.0   9701.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      22700.0  22700.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2157506.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2000.0   2000.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.08248 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005443818.0    1e+09     48.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   20955192.0    2e+07      1.0          result = func(*args, **kwargs)
+    81         1 1008269931.0    1e+09     48.4          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   45710001.0    5e+07      2.2          with open("memory_profile_output.txt", "a") as file:
+    85         1       9700.0   9700.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      23600.0  23600.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2066109.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1200.0   1200.0      0.0          return result
+
+
+Profiling results for function: submit_review
+Timer unit: 1e-09 s
+
+Total time: 2.0668 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005426131.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   21768943.0    2e+07      1.1          result = func(*args, **kwargs)
+    81         1 1006260769.0    1e+09     48.7          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   32353011.0    3e+07      1.6          with open("memory_profile_output.txt", "a") as file:
+    85         1       8400.0   8400.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      19300.0  19300.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     961706.0 961706.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: display_goods
+Timer unit: 1e-09 s
+
+Total time: 2.05885 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1004911361.0    1e+09     48.8          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    2899419.0    3e+06      0.1          result = func(*args, **kwargs)
+    81         1 1005594166.0    1e+09     48.8          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   43146282.0    4e+07      2.1          with open("memory_profile_output.txt", "a") as file:
+    85         1      10100.0  10100.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      23800.0  23800.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2268015.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1700.0   1700.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.06898 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006420965.0    1e+09     48.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   27336595.0    3e+07      1.3          result = func(*args, **kwargs)
+    81         1 1005818061.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   28458202.0    3e+07      1.4          with open("memory_profile_output.txt", "a") as file:
+    85         1       5900.0   5900.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      13900.0  13900.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1     929507.0 929507.0      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        600.0    600.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.03219 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007185870.0    1e+09     49.6          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   11173179.0    1e+07      0.5          result = func(*args, **kwargs)
+    81         1 1006751068.0    1e+09     49.5          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    4114129.0    4e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1      17200.0  17200.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      43601.0  43601.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2905120.0    3e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2500.0   2500.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.02663 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007610873.0    1e+09     49.7          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    7342952.0    7e+06      0.4          result = func(*args, **kwargs)
+    81         1 1006183308.0    1e+09     49.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    3045441.0    3e+06      0.2          with open("memory_profile_output.txt", "a") as file:
+    85         1       9600.0   9600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      24001.0  24001.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2416332.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1900.0   1900.0      0.0          return result
+
+
+Profiling results for function: make_sale
+Timer unit: 1e-09 s
+
+Total time: 2.05198 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005366419.0    1e+09     49.0          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   35759784.0    4e+07      1.7          result = func(*args, **kwargs)
+    81         1 1006555836.0    1e+09     49.1          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1    2673036.0    3e+06      0.1          with open("memory_profile_output.txt", "a") as file:
+    85         1       8200.0   8200.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      18501.0  18501.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1594921.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1500.0   1500.0      0.0          return result
+
+
+Profiling results for function: get_all_customers
+Timer unit: 1e-09 s
+
+Total time: 2.05635 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006068598.0    1e+09     48.9          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    6720841.0    7e+06      0.3          result = func(*args, **kwargs)
+    81         1 1007940609.0    1e+09     49.0          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   34594409.0    3e+07      1.7          with open("memory_profile_output.txt", "a") as file:
+    85         1       3700.0   3700.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      17701.0  17701.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1007206.0    1e+06      0.0              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        900.0    900.0      0.0          return result
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 2.07938 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007720208.0    1e+09     48.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    8225150.0    8e+06      0.4          result = func(*args, **kwargs)
+    81         1 1005813897.0    1e+09     48.4          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   55789554.0    6e+07      2.7          with open("memory_profile_output.txt", "a") as file:
+    85         1       5700.0   5700.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      34200.0  34200.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1785811.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1800.0   1800.0      0.0          return result
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 2.07271 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1005545578.0    1e+09     48.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    3981726.0    4e+06      0.2          result = func(*args, **kwargs)
+    81         1 1006820686.0    1e+09     48.6          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   54980449.0    5e+07      2.7          with open("memory_profile_output.txt", "a") as file:
+    85         1       4600.0   4600.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      16400.0  16400.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1360509.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1        900.0    900.0      0.0          return result
+
+
+Profiling results for function: get_customer_by_id
+Timer unit: 1e-09 s
+
+Total time: 2.07737 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007893029.0    1e+09     48.5          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    2521763.0    3e+06      0.1          result = func(*args, **kwargs)
+    81         1 1005851135.0    1e+09     48.4          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   59311628.0    6e+07      2.9          with open("memory_profile_output.txt", "a") as file:
+    85         1       6201.0   6201.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      21000.0  21000.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1767309.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1400.0   1400.0      0.0          return result
+
+
+Profiling results for function: charge_wallet
+Timer unit: 1e-09 s
+
+Total time: 2.08253 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1007394178.0    1e+09     48.4          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1   34083889.0    3e+07      1.6          result = func(*args, **kwargs)
+    81         1 1006553274.0    1e+09     48.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   33271284.0    3e+07      1.6          with open("memory_profile_output.txt", "a") as file:
+    85         1       4000.0   4000.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      14300.0  14300.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    1203207.0    1e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       1000.0   1000.0      0.0          return result
+
+
+Profiling results for function: view_wishlist
+Timer unit: 1e-09 s
+
+Total time: 2.0852 s
+File: /app/utils.py
+Function: wrapper at line 77
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    77                                               @wraps(func)
+    78                                               def wrapper(*args, **kwargs):
+    79         1 1006428305.0    1e+09     48.3          mem_usage_before = memory_usage(-1, interval=0.1, timeout=1)
+    80         1    6757025.0    7e+06      0.3          result = func(*args, **kwargs)
+    81         1 1006204504.0    1e+09     48.3          mem_usage_after = memory_usage(-1, interval=0.1, timeout=1)
+    82                                           
+    83                                                   # Log memory usage stats
+    84         1   63584534.0    6e+07      3.0          with open("memory_profile_output.txt", "a") as file:
+    85         1       6700.0   6700.0      0.0              file.write(f"\nMemory profiling for function: {func.__name__}\n")
+    86         1      25900.0  25900.0      0.0              file.write(f"Memory before: {mem_usage_before} MB\n")
+    87         1    2194808.0    2e+06      0.1              file.write(f"Memory after: {mem_usage_after} MB\n")
+    88                                           
+    89         1       2200.0   2200.0      0.0          return result
+
