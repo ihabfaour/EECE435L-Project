@@ -6,7 +6,7 @@ services:
     container_name: mysql-container
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ihab2003*
+      MYSQL_ROOT_PASSWORD: N4j1n4j1
       MYSQL_DATABASE: ecommerce_db
     ports:
       - "3307:3306"
@@ -23,25 +23,12 @@ services:
       - "5000:5000"
     environment:
       FLASK_ENV: development
-      PYTHONPATH: /app
+      PYTHONPATH: /app:/app/../
     volumes:
       - .:/app
+      - ./database:/app/../database
     depends_on:
       - mysql
-
-  test:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: test-container
-    depends_on:
-      - mysql
-    environment:
-      FLASK_ENV: testing
-      PYTHONPATH: /app
-    volumes:
-      - .:/app
-    entrypoint: ["pytest", "-v", "--maxfail=1", "--disable-warnings"]
 
   customers:
     build:
@@ -55,7 +42,8 @@ services:
       FLASK_APP: routes.py
       FLASK_ENV: development
     volumes:
-      - .:/app
+      - ./services/customers:/app
+      - ./database:/app/../database  
     depends_on:
       - mysql
 
@@ -71,9 +59,41 @@ services:
       FLASK_APP: routes.py
       FLASK_ENV: development
     volumes:
-      - .:/app
+      - ./services/inventory:/app
     depends_on:
       - mysql
-      
+
+  review:
+    build:
+      context: ./services/review
+      dockerfile: Dockerfile
+    container_name: review-service
+    restart: always
+    ports:
+      - "5003:5003"
+    environment:
+      FLASK_APP: routes.py
+      FLASK_ENV: development
+    volumes:
+      - ./services/review:/app
+    depends_on:
+      - mysql
+
+  sales:
+    build:
+      context: ./services/sales
+      dockerfile: Dockerfile
+    container_name: sales-service
+    restart: always
+    ports:
+      - "5004:5004"
+    environment:
+      FLASK_APP: routes.py
+      FLASK_ENV: development
+    volumes:
+      - ./services/sales:/app
+    depends_on:
+      - mysql
+
 volumes:
   mysql_data:

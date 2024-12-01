@@ -1,20 +1,25 @@
-# Use Python as the base image
-FROM python:3.9
+# Base image
+FROM python:3.10-slim
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the service code
-COPY ../../ /app
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libmariadb-dev \
+    libmariadb-dev-compat \
+    pkg-config
 
-# Install dependencies
+# Copy requirements and install them
+COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Set the PYTHONPATH to make all modules discoverable
-ENV PYTHONPATH=/app
+# Copy the rest of the service code into the container, including utils.py
+COPY . /app
 
-# Expose the service port
-EXPOSE 5001
+# Expose the port Flask runs on
+EXPOSE 5000
 
-# Run the Flask app
-CMD ["python", "-m", "flask", "run", "--host=0.0.0.0", "--port=5001"]
+# Command to run the Flask application
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
