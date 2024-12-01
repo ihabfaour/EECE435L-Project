@@ -190,7 +190,7 @@ def flag_review(review_id):
         review.status = 'flagged'
         db.session.commit()
 
-        return jsonify({"message": f"Review {review_id} has been flagged for moderation"}), 200
+        return jsonify({"message": f"Review has been flagged for moderation"}), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
@@ -221,7 +221,7 @@ def approve_review(review_id):
         review.status = 'approved'
         db.session.commit()
 
-        return jsonify({"message": f"Review {review_id} has been approved"}), 200
+        return jsonify({"message": f"Review has been approved"}), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
